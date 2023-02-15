@@ -1,5 +1,6 @@
 package gui;
 
+import application.SystemConfiguration;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -31,7 +32,7 @@ public class TransactionMenuController {
 
     @FXML
     public void exitThisMenuOnAction() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/main-menu-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(SystemConfiguration.mainMenuViewPath));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) exitThisMenuButton.getScene().getWindow();
         stage.setScene(scene);

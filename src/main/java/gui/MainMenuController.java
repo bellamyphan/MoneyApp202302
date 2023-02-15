@@ -1,5 +1,6 @@
 package gui;
 
+import application.SystemConfiguration;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,7 +20,7 @@ public class MainMenuController {
 
     @FXML
     public void transactionMenuOnAction() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/transaction-menu-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(SystemConfiguration.transactionMenuViewPath));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) transactionMenuButton.getScene().getWindow();
         stage.setScene(scene);
@@ -29,7 +30,7 @@ public class MainMenuController {
 
     @FXML
     public void bankMenuOnAction() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/bank-menu-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(SystemConfiguration.bankMenuViewPath));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) bankMenuButton.getScene().getWindow();
         stage.setScene(scene);
@@ -55,7 +56,7 @@ public class MainMenuController {
 
     @FXML
     public void exitThisMenuOnAction() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/application-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(SystemConfiguration.applicationViewPath));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) exitThisMenuButton.getScene().getWindow();
         stage.setScene(scene);

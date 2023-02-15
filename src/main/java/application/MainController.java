@@ -15,7 +15,7 @@ public class MainController {
 
     @FXML
     public void startMoneyAppOnAction() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/main-menu-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(SystemConfiguration.mainMenuViewPath));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) startMoneyAppButton.getScene().getWindow();
         stage.setScene(scene);
