@@ -4,13 +4,20 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import tools.StageHandler;
 
 import java.io.IOException;
 
 public class MainApplication extends Application {
 
     public static void main(String[] args) {
-        launch(args);
+        boolean productionTesting = false;
+        if (productionTesting) {
+            // Development code here...
+            System.exit(0);
+        } else {
+            launch(args);
+        }
     }
 
     @Override
@@ -19,7 +26,7 @@ public class MainApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Money App - Version 202302");
         stage.setScene(scene);
-        stage.setMaximized(true);
+        new StageHandler().setStageMaximized(stage);
         stage.show();
     }
 }

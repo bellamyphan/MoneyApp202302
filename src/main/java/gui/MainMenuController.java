@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import tools.StageHandler;
 
 import java.io.IOException;
 
@@ -42,7 +43,7 @@ public class MainMenuController {
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) onExitMainMenuButton.getScene().getWindow();
         stage.setScene(scene);
-        stage.setMaximized(true);
+        new StageHandler().setStageMaximized(stage);
         stage.show();
     }
 }
