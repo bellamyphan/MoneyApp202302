@@ -11,13 +11,13 @@ import java.io.IOException;
 
 public class MainController {
     @FXML
-    private Button onStartButtonClick;
+    private Button startMoneyAppButton;
 
     @FXML
-    public void onStartButtonClick() throws IOException {
+    public void startMoneyAppOnAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/main-menu-view.fxml"));
         Scene scene = new Scene(loader.load());
-        Stage stage = (Stage) onStartButtonClick.getScene().getWindow();
+        Stage stage = (Stage) startMoneyAppButton.getScene().getWindow();
         stage.setScene(scene);
         new StageHandler().setStageMaximized(stage);
         stage.show();
