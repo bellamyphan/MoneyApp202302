@@ -11,45 +11,45 @@ import java.io.IOException;
 
 public class MainMenuController {
     @FXML
-    private Button onExitMainMenuButton;
+    private Button exitThisMenuButton;
     @FXML
-    private Button onTransactionMenuButton;
+    private Button transactionMenuButton;
 
     @FXML
-    public void onTransactionMenuClick() throws IOException {
+    public void transactionMenuOnAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/transaction-menu-view.fxml"));
         Scene scene = new Scene(loader.load());
-        Stage stage = (Stage) onTransactionMenuButton.getScene().getWindow();
+        Stage stage = (Stage) transactionMenuButton.getScene().getWindow();
         stage.setScene(scene);
         new StageHandler().setStageMaximized(stage);
         stage.show();
     }
 
     @FXML
-    public void onBankMenuClick() {
+    public void bankMenuOnAction() {
     }
 
     @FXML
-    public void onReportMenuClick() {
+    public void reportMenuOnAction() {
     }
 
     @FXML
-    public void onExportMenuClick() {
+    public void exportMenuOnAction() {
     }
 
     @FXML
-    public void onInvestmentAndSavingMenuClick() {
+    public void investmentAndSavingMenuOnAction() {
     }
 
     @FXML
-    public void onNetWorthMenuClick() {
+    public void netWorthMenuOnAction() {
     }
 
     @FXML
-    public void onExitMainMenuClick() throws IOException {
+    public void exitThisMenuOnAction() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/application-view.fxml"));
         Scene scene = new Scene(loader.load());
-        Stage stage = (Stage) onExitMainMenuButton.getScene().getWindow();
+        Stage stage = (Stage) exitThisMenuButton.getScene().getWindow();
         stage.setScene(scene);
         new StageHandler().setStageMaximized(stage);
         stage.show();

@@ -9,11 +9,11 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Button text="Transaction Menu" fx:id="onTransactionMenuButton" onAction="#onTransactionMenuClick"/>
-    <Button text="Bank Menu" onAction="#onBankMenuClick"/>
-    <Button text="Report Menu" onAction="#onReportMenuClick"/>
-    <Button text="Export Menu" onAction="#onExportMenuClick"/>
-    <Button text="Investment and Saving Menu" onAction="#onInvestmentAndSavingMenuClick"/>
-    <Button text="Net Worth Menu" onAction="#onNetWorthMenuClick"/>
-    <Button text="Exit Main Menu" fx:id="onExitMainMenuButton" onAction="#onExitMainMenuClick"/>
+    <Button text="Transaction Menu" fx:id="transactionMenuButton" onAction="#transactionMenuOnAction"/>
+    <Button text="Bank Menu" onAction="#bankMenuOnAction"/>
+    <Button text="Report Menu" onAction="#reportMenuOnAction"/>
+    <Button text="Export Menu" onAction="#exportMenuOnAction"/>
+    <Button text="Investment and Saving Menu" onAction="#investmentAndSavingMenuOnAction"/>
+    <Button text="Net Worth Menu" onAction="#netWorthMenuOnAction"/>
+    <Button text="Exit this menu" fx:id="exitThisMenuButton" onAction="#exitThisMenuOnAction"/>
 </VBox>

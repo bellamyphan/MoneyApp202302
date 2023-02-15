@@ -4,18 +4,18 @@ import javafx.fxml.FXML;
 
 public class BankMenuController {
     @FXML
-    public void onShowAllBanksClick() {
+    public void showAllBanksOnAction() {
     }
 
     @FXML
-    public void onShowAllBankBalancesClick() {
+    public void showAllBankBalancesOnAction() {
     }
 
     @FXML
-    public void onAddABankClick() {
+    public void addABankOnAction() {
     }
 
     @FXML
-    public void onExitThisMenuClick() {
+    public void exitThisMenuOnAction() {
     }
 }
