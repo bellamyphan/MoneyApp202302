@@ -4,13 +4,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="gui.MainMenuController">
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gui.MainMenuController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Button text="Transaction Menu" onAction="#onTransactionMenuClick"/>
+    <Button text="Transaction Menu" fx:id="onTransactionMenuButton" onAction="#onTransactionMenuClick"/>
     <Button text="Bank Menu" onAction="#onBankMenuClick"/>
     <Button text="Report Menu" onAction="#onReportMenuClick"/>
     <Button text="Export Menu" onAction="#onExportMenuClick"/>

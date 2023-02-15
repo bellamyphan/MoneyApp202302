@@ -12,9 +12,17 @@ import java.io.IOException;
 public class MainMenuController {
     @FXML
     private Button onExitMainMenuButton;
+    @FXML
+    private Button onTransactionMenuButton;
 
     @FXML
-    public void onTransactionMenuClick() {
+    public void onTransactionMenuClick() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/transaction-menu-view.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage) onTransactionMenuButton.getScene().getWindow();
+        stage.setScene(scene);
+        new StageHandler().setStageMaximized(stage);
+        stage.show();
     }
 
     @FXML
