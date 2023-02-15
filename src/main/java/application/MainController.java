@@ -14,7 +14,7 @@ public class MainController {
 
     @FXML
     public void onStartButtonClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("main-menu-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/main-menu-view.fxml"));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) onStartButtonClick.getScene().getWindow();
         stage.setScene(scene);

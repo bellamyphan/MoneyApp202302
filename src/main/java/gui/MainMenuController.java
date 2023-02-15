@@ -1,4 +1,4 @@
-package application;
+package gui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +38,7 @@ public class MainMenuController {
 
     @FXML
     public void onExitMainMenuClick() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("application-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/application-view.fxml"));
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) onExitMainMenuButton.getScene().getWindow();
         stage.setScene(scene);
