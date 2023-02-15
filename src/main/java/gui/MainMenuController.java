@@ -42,7 +42,7 @@ public class MainMenuController {
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) onExitMainMenuButton.getScene().getWindow();
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        stage.setMaximized(true);
         stage.show();
     }
 }

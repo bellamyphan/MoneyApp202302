@@ -19,7 +19,7 @@ public class MainApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Money App - Version 202302");
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        stage.setMaximized(true);
         stage.show();
     }
 }

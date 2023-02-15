@@ -18,7 +18,7 @@ public class MainController {
         Scene scene = new Scene(loader.load());
         Stage stage = (Stage) onStartButtonClick.getScene().getWindow();
         stage.setScene(scene);
-        stage.setFullScreen(true);
+        stage.setMaximized(true);
         stage.show();
     }
 
