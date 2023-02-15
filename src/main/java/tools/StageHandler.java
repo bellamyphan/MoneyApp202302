@@ -1,8 +1,15 @@
 package tools;
 
+import application.SystemConfiguration;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class StageHandler {
     public void setStageMaximized(Stage stage) {
@@ -16,5 +23,15 @@ public class StageHandler {
         } else {
             stage.setMaximized(true);
         }
+    }
+
+    public void goToMainMenu(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(SystemConfiguration.mainMenuViewPath));
+        Scene scene = new Scene(loader.load());
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.setScene(scene);
+        setStageMaximized(stage);
+        stage.show();
     }
 }
