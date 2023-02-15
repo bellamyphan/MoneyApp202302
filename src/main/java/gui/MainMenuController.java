@@ -14,6 +14,8 @@ public class MainMenuController {
     private Button exitThisMenuButton;
     @FXML
     private Button transactionMenuButton;
+    @FXML
+    private Button bankMenuButton;
 
     @FXML
     public void transactionMenuOnAction() throws IOException {
@@ -26,7 +28,13 @@ public class MainMenuController {
     }
 
     @FXML
-    public void bankMenuOnAction() {
+    public void bankMenuOnAction() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/bank-menu-view.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage) bankMenuButton.getScene().getWindow();
+        stage.setScene(scene);
+        new StageHandler().setStageMaximized(stage);
+        stage.show();
     }
 
     @FXML

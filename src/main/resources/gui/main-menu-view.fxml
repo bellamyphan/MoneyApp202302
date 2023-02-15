@@ -10,7 +10,7 @@
     </padding>
 
     <Button text="Transaction Menu" fx:id="transactionMenuButton" onAction="#transactionMenuOnAction"/>
-    <Button text="Bank Menu" onAction="#bankMenuOnAction"/>
+    <Button text="Bank Menu" fx:id="bankMenuButton" onAction="#bankMenuOnAction"/>
     <Button text="Report Menu" onAction="#reportMenuOnAction"/>
     <Button text="Export Menu" onAction="#exportMenuOnAction"/>
     <Button text="Investment and Saving Menu" onAction="#investmentAndSavingMenuOnAction"/>
