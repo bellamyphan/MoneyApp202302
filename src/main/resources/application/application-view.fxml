@@ -10,5 +10,5 @@
     </padding>
 
     <Button text="Start Money App" fx:id="startMoneyAppButton" onAction="#startMoneyAppOnAction"/>
-    <Button text="Exit" onAction="#exitOnAction"/>
+    <Button text="Exit this application" onAction="#exitThisApplicationOnAction"/>
 </VBox>

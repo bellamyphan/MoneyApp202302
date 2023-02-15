@@ -24,7 +24,7 @@ public class MainController {
     }
 
     @FXML
-    public void exitOnAction() {
+    public void exitThisApplicationOnAction() {
         System.exit(0);
     }
 }
