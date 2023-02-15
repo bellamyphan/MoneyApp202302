@@ -2,11 +2,10 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
+import tools.PrimaryScreen;
 
 import java.io.IOException;
 
@@ -17,9 +16,7 @@ public class MainController {
     @FXML
     public void onStartButtonClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main-menu-view.fxml"));
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
-        Scene scene = new Scene(loader.load(), bounds.getWidth(), bounds.getHeight());
+        Scene scene = new Scene(loader.load(), PrimaryScreen.primaryScreenWidth, PrimaryScreen.primaryScreenHeight);
         Stage stage = (Stage) onStartButtonClick.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
