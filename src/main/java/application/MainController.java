@@ -1,9 +1,10 @@
 package application;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import tools.StageHandler;
 
@@ -11,13 +12,11 @@ import java.io.IOException;
 
 public class MainController {
     @FXML
-    private Button startMoneyAppButton;
-
-    @FXML
-    public void startMoneyAppOnAction() throws IOException {
+    public void startMoneyAppOnAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(SystemConfiguration.mainMenuViewPath));
         Scene scene = new Scene(loader.load());
-        Stage stage = (Stage) startMoneyAppButton.getScene().getWindow();
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
         stage.setScene(scene);
         new StageHandler().setStageMaximized(stage);
         stage.show();

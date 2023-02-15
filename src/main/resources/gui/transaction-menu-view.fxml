@@ -26,5 +26,5 @@
             <Label>Transaction Show Menu</Label>
         </VBox>
     </HBox>
-    <Button fx:id="exitThisMenuButton" onAction="#exitThisMenuOnAction">Exit this menu</Button>
+    <Button onAction="#exitThisMenuOnAction">Exit this menu</Button>
 </VBox>
