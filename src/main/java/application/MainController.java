@@ -9,7 +9,7 @@ import java.io.IOException;
 public class MainController {
     @FXML
     public void startMoneyAppOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToMainMenu(actionEvent);
+        new StageHandler().goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
     }
 
     @FXML

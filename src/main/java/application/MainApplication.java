@@ -1,8 +1,6 @@
 package application;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import tools.StageHandler;
 
@@ -22,13 +20,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                MainApplication.class.getResource(SystemConfiguration.applicationViewPath));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Money App - Version 202302");
-        stage.setScene(scene);
-        new StageHandler().setStageMaximized(stage);
-        stage.show();
+        new StageHandler().startTheApplication(stage);
     }
 }
 

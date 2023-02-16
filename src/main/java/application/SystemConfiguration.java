@@ -1,14 +1,17 @@
 package application;
 
 public class SystemConfiguration {
+    // Application title.
+    public static final String applicationTitle = "Money App - Version 2023 02";
+
     // Main application view path.
-    public static String applicationViewPath = "/application/application-view.fxml";
+    public static final String applicationViewPath = "/application/application-view.fxml";
 
     // Menu view path.
-    public static String bankMenuViewPath = "/gui/menu/bank-menu-view.fxml";
-    public static String mainMenuViewPath = "/gui/menu/main-menu-view.fxml";
-    public static String transactionMenuViewPath = "/gui/menu/transaction-menu-view.fxml";
+    public static final String bankMenuViewPath = "/gui/menu/bank-menu-view.fxml";
+    public static final String mainMenuViewPath = "/gui/menu/main-menu-view.fxml";
+    public static final String transactionMenuViewPath = "/gui/menu/transaction-menu-view.fxml";
 
     // Transaction view path.
-    public static String addATransactionViewPath = "/gui/transaction/add-a-transaction-view.fxml";
+    public static final String addATransactionViewPath = "/gui/transaction/add-a-transaction-view.fxml";
 }
