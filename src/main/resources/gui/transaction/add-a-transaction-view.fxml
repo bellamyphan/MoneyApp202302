@@ -4,15 +4,17 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 
 <GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="gui.transaction.AddATransactionController"
           alignment="CENTER" hgap="20" vgap="20">
 
     <Text GridPane.rowIndex="0" GridPane.columnIndex="0" text="Id"/>
-    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" text="Auto-generated id"/>
+    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" text="Auto-generated id" editable="false"/>
 
-    <Text GridPane.columnIndex="0" text="Type" GridPane.rowIndex="1"/>
-    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" text="Select a type"/>
+    <Text GridPane.rowIndex="1" GridPane.columnIndex="0" text="Type"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" text="Search type"/>
+    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="typeComboBox"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date"/>
     <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" text="Enter the date"/>
