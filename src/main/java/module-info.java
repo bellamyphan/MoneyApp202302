@@ -4,6 +4,8 @@ module application {
 
     opens application to javafx.fxml;
     exports application;
-    exports gui.menu;
     opens gui.menu to javafx.fxml;
+    exports gui.menu;
+    opens gui.transaction to javafx.fxml;
+    exports gui.transaction;
 }
