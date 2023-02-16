@@ -5,6 +5,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 
 <GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="gui.transaction.AddATransactionController"
           alignment="CENTER" hgap="20" vgap="20">
@@ -19,7 +20,7 @@
     <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="typeComboBox"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date"/>
-    <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" text="Enter the date"/>
+    <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="dateDatePicker"/>
 
     <Text GridPane.rowIndex="3" GridPane.columnIndex="0" text="Amount"/>
     <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" text="Enter USD amount"/>
