@@ -29,7 +29,6 @@ public class AddATransactionController {
     private void searchTypeOnKeyTyped(KeyEvent keyEvent) {
         TextField textField = (TextField) keyEvent.getSource();
         initializeTypeComboBox(textField.getText());
-        System.out.println("Key typed: " + keyEvent.getText() + "\t" + keyEvent.getCode());
     }
 
     @FXML

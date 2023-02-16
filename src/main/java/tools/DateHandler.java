@@ -17,7 +17,6 @@ public class DateHandler {
                 if (localDate != null) {
                     return dateTimeFormatter.format(localDate);
                 } else {
-                    System.out.println("Null returned");
                     return "";
                 }
             }
@@ -27,7 +26,6 @@ public class DateHandler {
                 if (string != null && !string.isEmpty()) {
                     return LocalDate.parse(string, dateTimeFormatter);
                 } else {
-                    System.out.println("Null returned");
                     return null;
                 }
             }
