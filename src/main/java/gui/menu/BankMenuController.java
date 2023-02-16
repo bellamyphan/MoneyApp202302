@@ -1,4 +1,4 @@
-package gui;
+package gui.menu;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

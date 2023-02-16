@@ -1,4 +1,4 @@
-package gui;
+package gui.menu;
 
 import application.SystemConfiguration;
 import javafx.event.ActionEvent;
