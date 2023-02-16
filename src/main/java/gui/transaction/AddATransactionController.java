@@ -5,7 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import objects.Type;
 import objects.TypeHandler;
 
@@ -22,6 +24,21 @@ public class AddATransactionController {
     public void searchTypeOnKeyTyped(KeyEvent keyEvent) {
         TextField textField = (TextField) keyEvent.getSource();
         initializeTypeComboBox(textField.getText());
+        System.out.println("Key typed: " + keyEvent.getText() + "\t" + keyEvent.getCode());
+    }
+
+    @FXML
+    public void searchTypeOnKeyReleased(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.TAB) {
+            TextField textField = (TextField) keyEvent.getSource();
+            textField.clear();
+        }
+    }
+
+    @FXML
+    public void searchTypeOnMouseClicked(MouseEvent mouseEvent) {
+        TextField textField = (TextField) mouseEvent.getSource();
+        textField.clear();
     }
 
     private void initializeTypeComboBox(String searchType) {
