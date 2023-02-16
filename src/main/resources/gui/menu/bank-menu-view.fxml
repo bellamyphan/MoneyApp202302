@@ -3,7 +3,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gui.menu.BankMenuController">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="gui.menu.BankMenuController"
+      alignment="CENTER" spacing="20.0">
     <Button text="Show all banks" onAction="#showAllBanksOnAction"/>
     <Button text="Show all bank balances" onAction="#showAllBankBalancesOnAction"/>
     <Button text="Add a bank" onAction="#addABankOnAction"/>

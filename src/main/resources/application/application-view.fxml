@@ -3,8 +3,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="application.MainController">
-
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="application.MainController"
+      alignment="CENTER" spacing="20.0">
     <Button text="Start Money App" onAction="#startMoneyAppOnAction"/>
     <Button text="Exit this application" onAction="#exitThisApplicationOnAction"/>
 </VBox>
