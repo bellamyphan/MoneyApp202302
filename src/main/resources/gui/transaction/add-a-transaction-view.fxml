@@ -13,7 +13,7 @@
     <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" text="Auto-generated id" editable="false"/>
 
     <Text GridPane.rowIndex="1" GridPane.columnIndex="0" text="Type"/>
-    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" text="Search type"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" text="Search type" onKeyTyped="#searchTypeOnKeyTyped"/>
     <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="typeComboBox"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date"/>
