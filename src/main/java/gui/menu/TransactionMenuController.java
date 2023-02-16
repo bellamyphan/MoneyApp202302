@@ -1,5 +1,6 @@
-package gui;
+package gui.menu;
 
+import application.SystemConfiguration;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import tools.StageHandler;
@@ -8,7 +9,8 @@ import java.io.IOException;
 
 public class TransactionMenuController {
     @FXML
-    public void addATransactionOnAction() {
+    public void addATransactionOnAction(ActionEvent actionEvent) throws IOException {
+        new StageHandler().goToView(actionEvent, SystemConfiguration.addATransactionViewPath);
     }
 
     @FXML
@@ -25,6 +27,6 @@ public class TransactionMenuController {
 
     @FXML
     public void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToMainMenu(actionEvent);
+        new StageHandler().goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
     }
 }

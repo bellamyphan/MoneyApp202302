@@ -1,6 +1,5 @@
 package tools;
 
-import application.SystemConfiguration;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -12,7 +11,25 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StageHandler {
-    public void setStageMaximized(Stage stage) {
+    public void goToView(ActionEvent actionEvent, String viewPath) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(viewPath));
+        Scene scene = new Scene(loader.load());
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.setScene(scene);
+        setStageMaximized(stage);
+        stage.show();
+    }
+
+    public void goToView(Stage stage, String viewPath) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(viewPath));
+        Scene scene = new Scene(loader.load());
+        stage.setScene(scene);
+        setStageMaximized(stage);
+        stage.show();
+    }
+
+    private void setStageMaximized(Stage stage) {
         String osName = System.getProperty("os.name");
         if (osName.compareTo("Windows 10") == 0 || osName.compareTo("Windows 11") == 0) {
             Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
@@ -23,15 +40,5 @@ public class StageHandler {
         } else {
             stage.setMaximized(true);
         }
-    }
-
-    public void goToMainMenu(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(SystemConfiguration.mainMenuViewPath));
-        Scene scene = new Scene(loader.load());
-        Node node = (Node) actionEvent.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        stage.setScene(scene);
-        setStageMaximized(stage);
-        stage.show();
     }
 }

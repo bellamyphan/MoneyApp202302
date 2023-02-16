@@ -6,15 +6,14 @@ import tools.StageHandler;
 
 import java.io.IOException;
 
-public class MainApplication extends Application {
+public class DevelopmentTesting extends Application {
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws IOException {
-        stage.setTitle(SystemConfiguration.applicationTitle);
-        new StageHandler().goToView(stage, SystemConfiguration.applicationViewPath);
+        new StageHandler().goToView(stage, SystemConfiguration.addATransactionViewPath);
     }
 }
-

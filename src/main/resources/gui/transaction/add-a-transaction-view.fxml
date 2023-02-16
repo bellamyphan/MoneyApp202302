@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="gui.transaction.AddATransactionController"
+          alignment="CENTER" hgap="20" vgap="20">
+
+    <Text text="Id" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField text="Auto-generated id" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Text text="Type" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField text="Select a type" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Text text="Date" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField text="Enter the date" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Text text="Amount" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField text="Enter USD amount" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Text text="Note" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField text="Enter note here" GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+
+    <Text text="Name" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <TextField text="Enter name here" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Text text="Location" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField text="Enter location here" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+    <Text text="Bank" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+    <TextField text="Enter primary bank" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+    <TextField text="Enter secondary bank" GridPane.rowIndex="7" GridPane.columnIndex="2"/>
+
+    <Text text="Is pending?" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+    <TextField text="Yes or No" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+    <Button text="Review the transaction" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+</GridPane>

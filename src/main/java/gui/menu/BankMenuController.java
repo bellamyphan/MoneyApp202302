@@ -1,5 +1,6 @@
-package gui;
+package gui.menu;
 
+import application.SystemConfiguration;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import tools.StageHandler;
@@ -21,6 +22,6 @@ public class BankMenuController {
 
     @FXML
     public void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToMainMenu(actionEvent);
+        new StageHandler().goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
     }
 }
