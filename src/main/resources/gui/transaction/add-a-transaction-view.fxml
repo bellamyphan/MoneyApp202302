@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="gui.transaction.AddATransactionController">
-    <HBox alignment="CENTER" spacing="20.0">
-        <Label>Id</Label>
-        <TextField onMouseClicked="#idOnMouseClicked" onKeyPressed="#idOnKeyPressed">Auto-generated id</TextField>
-    </HBox>
-    <HBox alignment="CENTER" spacing="20.0">
-        <Label text="Type"/>
-        <ComboBox fx:id="typeComboBox"/>
-    </HBox>
-</VBox>
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="gui.transaction.AddATransactionController"
+          alignment="CENTER" hgap="20" vgap="20">
+
+    <Text text="Id" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField text="Auto-generated id" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Text text="Type" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField text="Select a type" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+</GridPane>
