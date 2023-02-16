@@ -8,12 +8,12 @@ import java.io.IOException;
 
 public class MainController {
     @FXML
-    public void startMoneyAppOnAction(ActionEvent actionEvent) throws IOException {
+    private void startMoneyAppOnAction(ActionEvent actionEvent) throws IOException {
         new StageHandler().goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
     }
 
     @FXML
-    public void exitThisApplicationOnAction() {
+    private void exitThisApplicationOnAction() {
         System.exit(0);
     }
 }

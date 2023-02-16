@@ -14,21 +14,23 @@ import objects.TypeHandler;
 public class AddATransactionController {
     @FXML
     private ComboBox<Type> typeComboBox;
+//    @FXML
+//    private DatePicker dateDatePicker;
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         initializeTypeComboBox("");
     }
 
     @FXML
-    public void searchTypeOnKeyTyped(KeyEvent keyEvent) {
+    private void searchTypeOnKeyTyped(KeyEvent keyEvent) {
         TextField textField = (TextField) keyEvent.getSource();
         initializeTypeComboBox(textField.getText());
         System.out.println("Key typed: " + keyEvent.getText() + "\t" + keyEvent.getCode());
     }
 
     @FXML
-    public void searchTypeOnKeyReleased(KeyEvent keyEvent) {
+    private void searchTypeOnKeyReleased(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.TAB) {
             TextField textField = (TextField) keyEvent.getSource();
             textField.clear();
@@ -36,7 +38,7 @@ public class AddATransactionController {
     }
 
     @FXML
-    public void searchTypeOnMouseClicked(MouseEvent mouseEvent) {
+    private void searchTypeOnMouseClicked(MouseEvent mouseEvent) {
         TextField textField = (TextField) mouseEvent.getSource();
         textField.clear();
     }

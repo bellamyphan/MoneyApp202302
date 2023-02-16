@@ -9,24 +9,24 @@ import java.io.IOException;
 
 public class TransactionMenuController {
     @FXML
-    public void addATransactionOnAction(ActionEvent actionEvent) throws IOException {
+    private void addATransactionOnAction(ActionEvent actionEvent) throws IOException {
         new StageHandler().goToView(actionEvent, SystemConfiguration.addATransactionViewPath);
     }
 
     @FXML
-    public void modifyATransactionOnAction() {
+    private void modifyATransactionOnAction() {
     }
 
     @FXML
-    public void deleteATransactionOnAction() {
+    private void deleteATransactionOnAction() {
     }
 
     @FXML
-    public void markATransactionRepeatable() {
+    private void markATransactionRepeatable() {
     }
 
     @FXML
-    public void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
+    private void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
         new StageHandler().goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
     }
 }

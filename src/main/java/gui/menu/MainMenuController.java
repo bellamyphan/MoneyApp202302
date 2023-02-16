@@ -9,33 +9,33 @@ import java.io.IOException;
 
 public class MainMenuController {
     @FXML
-    public void transactionMenuOnAction(ActionEvent actionEvent) throws IOException {
+    private void transactionMenuOnAction(ActionEvent actionEvent) throws IOException {
         new StageHandler().goToView(actionEvent, SystemConfiguration.transactionMenuViewPath);
     }
 
     @FXML
-    public void bankMenuOnAction(ActionEvent actionEvent) throws IOException {
+    private void bankMenuOnAction(ActionEvent actionEvent) throws IOException {
         new StageHandler().goToView(actionEvent, SystemConfiguration.bankMenuViewPath);
     }
 
     @FXML
-    public void reportMenuOnAction() {
+    private void reportMenuOnAction() {
     }
 
     @FXML
-    public void exportMenuOnAction() {
+    private void exportMenuOnAction() {
     }
 
     @FXML
-    public void investmentAndSavingMenuOnAction() {
+    private void investmentAndSavingMenuOnAction() {
     }
 
     @FXML
-    public void netWorthMenuOnAction() {
+    private void netWorthMenuOnAction() {
     }
 
     @FXML
-    public void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
+    private void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
         new StageHandler().goToView(actionEvent, SystemConfiguration.applicationViewPath);
     }
 }
