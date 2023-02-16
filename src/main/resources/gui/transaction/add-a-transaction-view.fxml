@@ -20,7 +20,7 @@
     <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="typeComboBox"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date"/>
-    <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="dateDatePicker"/>
+    <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="dateDatePicker" promptText="yyyy-mm-dd"/>
 
     <Text GridPane.rowIndex="3" GridPane.columnIndex="0" text="Amount"/>
     <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" text="Enter USD amount"/>
