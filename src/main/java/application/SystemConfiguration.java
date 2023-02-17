@@ -16,4 +16,5 @@ public class SystemConfiguration {
     // Data paths
     public static final String bankDataPath = "data/banks.csv";
     public static final String usStatesPath = "data/usStates.csv";
+    public static final String usCitiesPath = "data/usCities.csv";
 }
