@@ -4,8 +4,10 @@ import application.SystemConfiguration;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class DateHandler {
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(SystemConfiguration.dateFormat);
@@ -30,5 +32,14 @@ public class DateHandler {
                 }
             }
         });
+    }
+
+    public String getDateString(Date date) {
+        if (date != null) {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(SystemConfiguration.dateFormat);
+            return simpleDateFormat.format(date);
+        } else {
+            return null;
+        }
     }
 }
