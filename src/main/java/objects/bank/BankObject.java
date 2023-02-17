@@ -1,5 +1,6 @@
 package objects.bank;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class BankObject {
@@ -9,10 +10,10 @@ public class BankObject {
     private final Date openDate;
     private final Date closeDate;
     private final BankType accountType;
-    private final Double interestRate;
+    private final BigDecimal interestRate;
 
     public BankObject(String bankName, String website, String accountName, Date openDate, Date closeDate,
-                      BankType accountType, Double interestRate) {
+                      BankType accountType, BigDecimal interestRate) {
         this.bankName = bankName;
         this.website = website;
         this.accountName = accountName;
@@ -46,7 +47,7 @@ public class BankObject {
         return accountType;
     }
 
-    public Double getInterestRate() {
+    public BigDecimal getInterestRate() {
         return interestRate;
     }
 }

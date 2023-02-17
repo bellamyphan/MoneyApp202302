@@ -25,7 +25,7 @@
     <DatePicker GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="openDatePicker" promptText="yyyy-mm-dd"/>
 
     <Text GridPane.rowIndex="4" GridPane.columnIndex="0" text="Close date"/>
-    <DatePicker GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="yyyy-mm-dd"/>
+    <DatePicker GridPane.rowIndex="4" GridPane.columnIndex="1" fx:id="closeDatePicker" promptText="yyyy-mm-dd"/>
 
     <Text GridPane.rowIndex="5" GridPane.columnIndex="0" text="Account type"/>
     <ComboBox GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="accountTypeComboBox" promptText="Select"/>
@@ -35,7 +35,8 @@
                promptText="Enter the interest rate"/>
 
     <Button GridPane.rowIndex="7" GridPane.columnIndex="0" text="Review" onAction="#reviewOnAction"/>
-    <Button GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"/>
+    <Button GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"
+            onAction="#confirmOnAction"/>
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" fx:id="feedbackText"/>
 
 </GridPane>

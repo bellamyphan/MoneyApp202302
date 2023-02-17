@@ -29,7 +29,7 @@ public class AddATransactionController {
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
-        new DateHandler().formatDatePicker(datePicker);
+        DateHandler.formatDatePicker(datePicker);
     }
 
     @FXML

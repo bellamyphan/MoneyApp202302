@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import objects.bank.BankType;
 import objects.bank.BankTypeHandler;
+import tools.DateHandler;
 
 public class AddABankController {
     @FXML
@@ -17,7 +18,7 @@ public class AddABankController {
     @FXML
     private TextField bankNameTextField, websiteTextField, accountNameTextField, interestRateTextField;
     @FXML
-    private DatePicker openDatePicker;
+    private DatePicker openDatePicker, closeDatePicker;
     @FXML
     private Text feedbackText;
     @FXML
@@ -25,9 +26,13 @@ public class AddABankController {
 
     @FXML
     private void initialize() {
+        // Load bank type combo box
         ObservableList<BankType> bankTypeObservableList = FXCollections.observableArrayList();
         bankTypeObservableList.addAll(new BankTypeHandler().getBankTypeList());
         accountTypeComboBox.setItems(bankTypeObservableList);
+        // Format date picker
+        DateHandler.formatDatePicker(openDatePicker);
+        DateHandler.formatDatePicker(closeDatePicker);
     }
 
     @FXML
@@ -57,5 +62,14 @@ public class AddABankController {
         }
         feedbackText.setText("");
         confirmButton.setVisible(true);
+    }
+
+    @FXML
+    private void confirmOnAction(/*ActionEvent actionEvent*/) {
+//        BankObject bankObject = new BankObject(bankNameTextField.getText(), websiteTextField.getText(),
+//                accountNameTextField.getText(), new DateHandler().getJavaUtilDate(openDatePicker.getValue().toString()),
+//                new DateHandler().getJavaUtilDate(closeDatePicker.getValue().toString()),
+//                accountTypeComboBox.getValue(), Double.parseDouble(interestRateTextField.getText()));
+//        new BankWriterDao().addABankToDatabase(bankObject);
     }
 }
