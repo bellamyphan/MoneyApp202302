@@ -3,6 +3,7 @@ package gui.transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -14,9 +15,11 @@ import tools.DateHandler;
 
 public class AddATransactionController {
     @FXML
+    private Button confirmButton;
+    @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
-    private DatePicker dateDatePicker;
+    private DatePicker datePicker;
     @FXML
     private TextField idTextField, searchTypeTextField, amountTextField, noteTextField, nameTextField,
             locationTextField, primaryBankTextField, secondaryBankTextField, isPendingTextField;
@@ -26,7 +29,7 @@ public class AddATransactionController {
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
-        new DateHandler().formatDatePicker(dateDatePicker);
+        DateHandler.formatDatePicker(datePicker);
     }
 
     @FXML
@@ -42,7 +45,7 @@ public class AddATransactionController {
     }
 
     @FXML
-    private void reviewTransactionOnAction() {
+    private void reviewOnAction() {
         // Generate the transaction id
         idTextField.setText("No data to generate the id");
 
@@ -51,7 +54,7 @@ public class AddATransactionController {
             feedBackText.setText("Select a type");
             return;
         }
-        if (dateDatePicker.getValue() == null) {
+        if (datePicker.getValue() == null) {
             feedBackText.setText("Enter the date");
             return;
         }
@@ -84,6 +87,7 @@ public class AddATransactionController {
             return;
         }
         feedBackText.setText("");
+        confirmButton.setVisible(true);
     }
 
     private void initializeTypeComboBox(String searchType) {

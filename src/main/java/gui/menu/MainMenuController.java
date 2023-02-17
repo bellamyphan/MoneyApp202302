@@ -10,12 +10,12 @@ import java.io.IOException;
 public class MainMenuController {
     @FXML
     private void transactionMenuOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToView(actionEvent, SystemConfiguration.transactionMenuViewPath);
+        StageHandler.goToView(actionEvent, SystemConfiguration.transactionMenuViewPath);
     }
 
     @FXML
     private void bankMenuOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToView(actionEvent, SystemConfiguration.bankMenuViewPath);
+        StageHandler.goToView(actionEvent, SystemConfiguration.bankMenuViewPath);
     }
 
     @FXML
@@ -36,6 +36,6 @@ public class MainMenuController {
 
     @FXML
     private void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToView(actionEvent, SystemConfiguration.applicationViewPath);
+        StageHandler.goToView(actionEvent, SystemConfiguration.applicationViewPath);
     }
 }

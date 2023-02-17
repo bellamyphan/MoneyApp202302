@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TransactionMenuController {
     @FXML
     private void addATransactionOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToView(actionEvent, SystemConfiguration.addATransactionViewPath);
+        StageHandler.goToView(actionEvent, SystemConfiguration.addATransactionViewPath);
     }
 
     @FXML
@@ -27,6 +27,6 @@ public class TransactionMenuController {
 
     @FXML
     private void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
+        StageHandler.goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
     }
 }

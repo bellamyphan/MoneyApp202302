@@ -14,4 +14,5 @@ public class SystemConfiguration {
     public static final String addABankViewPath = "/gui/bank/add-a-bank-view.fxml";
 
     // Data paths
+    public static final String bankDataPath = "data/banks.csv";
 }

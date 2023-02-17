@@ -20,7 +20,7 @@
               onAction="#typeComboBoxOnAction"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date"/>
-    <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="dateDatePicker" promptText="yyyy-mm-dd"/>
+    <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="datePicker" promptText="yyyy-mm-dd"/>
 
     <Text GridPane.rowIndex="3" GridPane.columnIndex="0" text="Amount"/>
     <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="amountTextField" promptText="Enter USD amount"/>
@@ -45,8 +45,8 @@
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" text="Is pending?"/>
     <TextField GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="isPendingTextField" promptText="Yes or No"/>
 
-    <Button GridPane.rowIndex="9" GridPane.columnIndex="1" text="Review transaction"
-            onAction="#reviewTransactionOnAction"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="0" text="Review" onAction="#reviewOnAction"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"/>
     <Text GridPane.rowIndex="10" GridPane.columnIndex="1" fx:id="feedBackText"/>
 
 </GridPane>

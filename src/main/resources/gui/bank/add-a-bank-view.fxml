@@ -11,27 +11,35 @@
           alignment="CENTER" hgap="20" vgap="20">
 
     <Text GridPane.rowIndex="0" GridPane.columnIndex="0" text="Bank"/>
-    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Enter the bank name"/>
+    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="bankNameTextField"
+               promptText="Enter the bank name"/>
 
     <Text GridPane.rowIndex="1" GridPane.columnIndex="0" text="Website"/>
-    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Enter the website"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="websiteTextField" promptText="Enter the website"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Account Name"/>
-    <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Enter account name"/>
+    <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="accountNameTextField"
+               promptText="Enter account name"/>
 
     <Text GridPane.rowIndex="3" GridPane.columnIndex="0" text="Open date"/>
-    <DatePicker GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="yyyy-mm-dd"/>
+    <DatePicker GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="openDatePicker" promptText="yyyy-mm-dd"/>
 
     <Text GridPane.rowIndex="4" GridPane.columnIndex="0" text="Close date"/>
-    <DatePicker GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="yyyy-mm-dd"/>
+    <DatePicker GridPane.rowIndex="4" GridPane.columnIndex="1" fx:id="closeDatePicker" promptText="yyyy-mm-dd"/>
 
     <Text GridPane.rowIndex="5" GridPane.columnIndex="0" text="Account type"/>
     <ComboBox GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="accountTypeComboBox" promptText="Select"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Interest rate"/>
-    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" promptText="Enter the interest rate"/>
+    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="interestRateTextField"
+               promptText="Enter the interest rate"/>
 
-    <Button GridPane.rowIndex="7" GridPane.columnIndex="0" text="Review bank"/>
-    <Text GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+    <Button GridPane.rowIndex="7" GridPane.columnIndex="0" fx:id="reviewButton" text="Review"
+            onAction="#reviewOnAction"/>
+    <Button GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"
+            onAction="#confirmOnAction"/>
+    <Button GridPane.rowIndex="7" GridPane.columnIndex="2" fx:id="goBackButton" text="Go back" visible="false"
+            onAction="#goBackOnAction"/>
+    <Text GridPane.rowIndex="8" GridPane.columnIndex="0" fx:id="feedbackText"/>
 
 </GridPane>

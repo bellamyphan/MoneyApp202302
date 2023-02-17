@@ -4,13 +4,17 @@ import application.SystemConfiguration;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class DateHandler {
-    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(SystemConfiguration.dateFormat);
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(SystemConfiguration.dateFormat);
+    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(SystemConfiguration.dateFormat);
 
-    public void formatDatePicker(DatePicker datePicker) {
+    public static void formatDatePicker(DatePicker datePicker) {
         datePicker.setConverter(new StringConverter<>() {
             @Override
             public String toString(LocalDate localDate) {
@@ -30,5 +34,23 @@ public class DateHandler {
                 }
             }
         });
+    }
+
+    public static String getDateString(Date date) {
+        if (date != null) {
+            return simpleDateFormat.format(date);
+        } else {
+            return "";
+        }
+    }
+
+    public static Date getJavaUtilDate(String dateString) {
+        Date date;
+        try {
+            date = simpleDateFormat.parse(dateString);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return date;
     }
 }
