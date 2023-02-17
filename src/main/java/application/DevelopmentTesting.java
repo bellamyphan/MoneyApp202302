@@ -14,6 +14,6 @@ public class DevelopmentTesting extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        StageHandler.goToView(stage, SystemConfiguration.addABankViewPath);
+        StageHandler.goToView(stage, SystemConfiguration.addATransactionViewPath);
     }
 }
