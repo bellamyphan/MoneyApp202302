@@ -12,7 +12,7 @@
 
     <Text GridPane.rowIndex="0" GridPane.columnIndex="0" text="Id"/>
     <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="idTextField" text="Auto-generated id"
-               editable="false"/>
+               disable="true"/>
 
     <Text GridPane.rowIndex="1" GridPane.columnIndex="0" text="Type"/>
     <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="typeComboBox" editable="true"
@@ -32,10 +32,10 @@
     <TextField GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="nameTextField" promptText="Enter name here"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Location"/>
-    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="stateComboBox"
-               promptText="Enter state"/>
-    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="cityComboBox"
-               promptText="Enter city"/>
+    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="stateComboBox" promptText="Enter state name/code"
+              editable="true" onAction="#stateComboBoxOnAction"/>
+    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="cityComboBox" promptText="Enter city"
+              editable="true"/>
 
     <Text GridPane.rowIndex="7" GridPane.columnIndex="0" text="Bank"/>
     <ComboBox GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankComboBox"

@@ -27,6 +27,6 @@ public class TypeHandler {
                 return type;
             }
         }
-         return null;
+        return null;
     }
 }

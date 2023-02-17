@@ -15,6 +15,7 @@ import objects.type.Type;
 import objects.type.TypeHandler;
 import tools.DateHandler;
 import tools.StageHandler;
+import tools.UsaStateHandler;
 
 import java.io.IOException;
 
@@ -35,10 +36,12 @@ public class AddATransactionController {
     private Text feedBackText;
 
     private Type selectedType;
+    private String selectedStateName;
 
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
+        initializeStateComboBox("");
         initializeIsPendingComboBox();
         DateHandler.formatDatePicker(datePicker);
     }
@@ -50,6 +53,16 @@ public class AddATransactionController {
             initializeTypeComboBox(String.valueOf(typeComboBox.getValue()));
         } else {
             typeComboBox.setValue(selectedType);
+        }
+    }
+
+    @FXML
+    private void stateComboBoxOnAction() {
+        selectedStateName = new UsaStateHandler().getStateName(stateComboBox.getValue());
+        if (selectedStateName == null) {
+            initializeStateComboBox(stateComboBox.getValue());
+        } else {
+            stateComboBox.setValue(selectedStateName);
         }
     }
 
@@ -78,8 +91,8 @@ public class AddATransactionController {
             feedBackText.setText("Enter the name");
             return;
         }
-        if (stateComboBox.getValue() == null) {
-            feedBackText.setText("Enter the state");
+        if (selectedStateName == null) {
+            feedBackText.setText("Select valid state");
             return;
         }
         if (cityComboBox.getValue() == null) {
@@ -107,6 +120,12 @@ public class AddATransactionController {
         ObservableList<Type> typeObservableList = FXCollections.observableArrayList();
         typeObservableList.addAll(new TypeHandler().getTypeList(searchType));
         typeComboBox.setItems(typeObservableList);
+    }
+
+    private void initializeStateComboBox(String searchString) {
+        ObservableList<String> stateObservableList = FXCollections.observableArrayList();
+        stateObservableList.addAll(new UsaStateHandler().getStateNames(searchString));
+        stateComboBox.setItems(stateObservableList);
     }
 
     private void initializeIsPendingComboBox() {

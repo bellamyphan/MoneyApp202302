@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsaStateHandler {
-    public static List<String> getUsaStateCodes() {
-        List<String> stateCodes = new ArrayList<>();
+
+    private final List<String> stateNames;
+
+    public UsaStateHandler() {
+        stateNames = new ArrayList<>();
         try (FileReader fileReader = new FileReader(SystemConfiguration.usStatesPath);
              CSVReader csvReader = new CSVReader(fileReader)) {
             String[] stateLine;
@@ -21,11 +24,29 @@ public class UsaStateHandler {
                     skipHeaderLine = false;
                     continue;
                 }
-                stateCodes.add(stateLine[2]);
+                stateNames.add(stateLine[0]);
             }
         } catch (IOException | CsvValidationException e) {
             throw new RuntimeException(e);
         }
-        return stateCodes;
+    }
+
+    public List<String> getStateNames(String searchString) {
+        List<String> resultList = new ArrayList<>();
+        for (String stateName : stateNames) {
+            if (stateName.toLowerCase().contains(searchString.toLowerCase())) {
+                resultList.add(stateName);
+            }
+        }
+        return resultList;
+    }
+
+    public String getStateName(String searchString) {
+        for (String stateName : stateNames) {
+            if (stateName.compareToIgnoreCase(searchString) == 0) {
+                return stateName;
+            }
+        }
+        return null;
     }
 }
