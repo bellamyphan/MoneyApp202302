@@ -18,6 +18,8 @@ import tools.StageHandler;
 import tools.UsaStateHandler;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class AddATransactionController {
     @FXML
@@ -43,6 +45,7 @@ public class AddATransactionController {
         initializeTypeComboBox("");
         initializeStateComboBox("");
         initializeIsPendingComboBox();
+        initializeDatePicker();
         DateHandler.formatDatePicker(datePicker);
     }
 
@@ -132,5 +135,9 @@ public class AddATransactionController {
         ObservableList<String> stringObservableList = FXCollections.observableArrayList();
         stringObservableList.addAll("Yes", "No");
         isPendingComboBox.setItems(stringObservableList);
+    }
+
+    private void initializeDatePicker() {
+        datePicker.setValue(LocalDate.parse(DateHandler.getDateString(new Date())));
     }
 }
