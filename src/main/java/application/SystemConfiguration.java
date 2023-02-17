@@ -17,4 +17,7 @@ public class SystemConfiguration {
 
     // Transaction view path.
     public static final String addATransactionViewPath = "/gui/transaction/add-a-transaction-view.fxml";
+
+    // Bank view path.
+    public static final String addABankViewPath = "/gui/bank/add-a-bank-view.fxml";
 }

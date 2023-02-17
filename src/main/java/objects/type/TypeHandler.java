@@ -1,4 +1,4 @@
-package objects;
+package objects.type;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,10 +10,6 @@ public class TypeHandler {
     public TypeHandler() {
         typeList = Arrays.asList(Type.values());
     }
-
-//    public List<Type> getTypeList() {
-//        return typeList;
-//    }
 
     public List<Type> getTypeList(String searchText) {
         List<Type> resultType = new ArrayList<>();
