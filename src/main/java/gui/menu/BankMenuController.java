@@ -18,11 +18,11 @@ public class BankMenuController {
 
     @FXML
     private void addABankOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToView(actionEvent, SystemConfiguration.addABankViewPath);
+        StageHandler.goToView(actionEvent, SystemConfiguration.addABankViewPath);
     }
 
     @FXML
     private void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
-        new StageHandler().goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
+        StageHandler.goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
     }
 }

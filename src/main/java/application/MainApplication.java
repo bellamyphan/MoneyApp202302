@@ -14,7 +14,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle(SystemConfiguration.applicationTitle);
-        new StageHandler().goToView(stage, SystemConfiguration.applicationViewPath);
+        StageHandler.goToView(stage, SystemConfiguration.applicationViewPath);
     }
 }
 
