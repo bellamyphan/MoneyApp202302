@@ -3,6 +3,7 @@ package gui.transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -13,6 +14,8 @@ import objects.type.TypeHandler;
 import tools.DateHandler;
 
 public class AddATransactionController {
+    @FXML
+    private Button confirmButton;
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
@@ -42,7 +45,7 @@ public class AddATransactionController {
     }
 
     @FXML
-    private void reviewTransactionOnAction() {
+    private void reviewOnAction() {
         // Generate the transaction id
         idTextField.setText("No data to generate the id");
 
@@ -84,6 +87,7 @@ public class AddATransactionController {
             return;
         }
         feedBackText.setText("");
+        confirmButton.setVisible(true);
     }
 
     private void initializeTypeComboBox(String searchType) {

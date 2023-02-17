@@ -45,8 +45,8 @@
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" text="Is pending?"/>
     <TextField GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="isPendingTextField" promptText="Yes or No"/>
 
-    <Button GridPane.rowIndex="9" GridPane.columnIndex="1" text="Review transaction"
-            onAction="#reviewTransactionOnAction"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="0" text="Review" onAction="#reviewOnAction"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"/>
     <Text GridPane.rowIndex="10" GridPane.columnIndex="1" fx:id="feedBackText"/>
 
 </GridPane>
