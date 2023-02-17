@@ -15,7 +15,7 @@ import objects.type.Type;
 import objects.type.TypeHandler;
 import tools.DateHandler;
 import tools.StageHandler;
-import tools.address.UsaStateHandler;
+import objects.location.UsaStateHandler;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -61,7 +61,10 @@ public class AddATransactionController {
 
     @FXML
     private void stateComboBoxOnAction() {
-        selectedStateName = new UsaStateHandler().getStateName(stateComboBox.getValue());
+        String comboBoxValue = stateComboBox.getValue();
+        UsaStateHandler stateHandler = new UsaStateHandler();
+        selectedStateName = stateHandler.isValidStateName(comboBoxValue) ?
+                stateHandler.getState(comboBoxValue).getStateName() : null;
         if (selectedStateName == null) {
             initializeStateComboBox(stateComboBox.getValue());
         } else {
@@ -125,9 +128,9 @@ public class AddATransactionController {
         typeComboBox.setItems(typeObservableList);
     }
 
-    private void initializeStateComboBox(String searchString) {
+    private void initializeStateComboBox(String stateNameSearch) {
         ObservableList<String> stateObservableList = FXCollections.observableArrayList();
-        stateObservableList.addAll(new UsaStateHandler().getStateNames(searchString));
+        stateObservableList.addAll(new UsaStateHandler().getStateNames(stateNameSearch));
         stateComboBox.setItems(stateObservableList);
     }
 
