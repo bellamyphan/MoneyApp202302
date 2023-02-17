@@ -16,7 +16,7 @@ public class AddATransactionController {
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
-    private DatePicker dateDatePicker;
+    private DatePicker datePicker;
     @FXML
     private TextField idTextField, searchTypeTextField, amountTextField, noteTextField, nameTextField,
             locationTextField, primaryBankTextField, secondaryBankTextField, isPendingTextField;
@@ -26,7 +26,7 @@ public class AddATransactionController {
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
-        new DateHandler().formatDatePicker(dateDatePicker);
+        new DateHandler().formatDatePicker(datePicker);
     }
 
     @FXML
@@ -51,7 +51,7 @@ public class AddATransactionController {
             feedBackText.setText("Select a type");
             return;
         }
-        if (dateDatePicker.getValue() == null) {
+        if (datePicker.getValue() == null) {
             feedBackText.setText("Enter the date");
             return;
         }
