@@ -39,7 +39,7 @@ public class DateHandler {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(SystemConfiguration.dateFormat);
             return simpleDateFormat.format(date);
         } else {
-            return null;
+            return "";
         }
     }
 }
