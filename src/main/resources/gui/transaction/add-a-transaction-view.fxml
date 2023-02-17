@@ -33,8 +33,10 @@
     <TextField GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="nameTextField" promptText="Enter name here"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Location"/>
-    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="locationTextField"
-               promptText="Enter location here"/>
+    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="cityTextField"
+               promptText="Enter city"/>
+    <TextField GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="stateTextField"
+               promptText="Enter state"/>
 
     <Text GridPane.rowIndex="7" GridPane.columnIndex="0" text="Bank"/>
     <TextField GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankTextField"

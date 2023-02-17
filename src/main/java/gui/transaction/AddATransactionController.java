@@ -22,7 +22,7 @@ public class AddATransactionController {
     private DatePicker datePicker;
     @FXML
     private TextField idTextField, searchTypeTextField, amountTextField, noteTextField, nameTextField,
-            locationTextField, primaryBankTextField, secondaryBankTextField, isPendingTextField;
+            cityTextField, stateTextField, primaryBankTextField, secondaryBankTextField, isPendingTextField;
     @FXML
     private Text feedBackText;
 
@@ -70,8 +70,12 @@ public class AddATransactionController {
             feedBackText.setText("Enter the name");
             return;
         }
-        if (locationTextField.getText().length() == 0) {
-            feedBackText.setText("Enter the location");
+        if (cityTextField.getText().length() == 0) {
+            feedBackText.setText("Enter the city");
+            return;
+        }
+        if (stateTextField.getText().length() == 0) {
+            feedBackText.setText("Enter the state");
             return;
         }
         if (primaryBankTextField.getText().length() == 0) {
