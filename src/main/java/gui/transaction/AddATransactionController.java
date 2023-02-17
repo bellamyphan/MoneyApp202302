@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import objects.bank.BankObject;
 import objects.type.Type;
@@ -31,9 +30,11 @@ public class AddATransactionController {
     @FXML
     private DatePicker datePicker;
     @FXML
-    private TextField idTextField, searchTypeTextField, amountTextField, noteTextField, nameTextField;
+    private TextField idTextField, amountTextField, noteTextField, nameTextField;
     @FXML
     private Text feedBackText;
+
+    private Type selectedType;
 
     @FXML
     private void initialize() {
@@ -43,25 +44,22 @@ public class AddATransactionController {
     }
 
     @FXML
-    private void searchTypeOnKeyTyped(KeyEvent keyEvent) {
-        TextField textField = (TextField) keyEvent.getSource();
-        initializeTypeComboBox(textField.getText());
-    }
-
-    @FXML
     private void typeComboBoxOnAction() {
-        searchTypeTextField.setText("Type selected");
-        searchTypeTextField.setEditable(false);
+        selectedType = new TypeHandler().getType(String.valueOf(typeComboBox.getValue()));
+        if (selectedType == null) {
+            initializeTypeComboBox(String.valueOf(typeComboBox.getValue()));
+        } else {
+            typeComboBox.setValue(selectedType);
+        }
     }
 
     @FXML
     private void reviewOnAction() {
         // Generate the transaction id
         idTextField.setText("No data to generate the id");
-
         // Check all text fields
-        if (typeComboBox.getValue() == null) {
-            feedBackText.setText("Select a type");
+        if (selectedType == null) {
+            feedBackText.setText("Select valid type");
             return;
         }
         if (datePicker.getValue() == null) {

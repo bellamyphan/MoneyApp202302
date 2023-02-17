@@ -11,13 +11,12 @@
           alignment="CENTER" hgap="20" vgap="20">
 
     <Text GridPane.rowIndex="0" GridPane.columnIndex="0" text="Id"/>
-    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="idTextField" text="Auto-generated id" editable="false"/>
+    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="idTextField" text="Auto-generated id"
+               editable="false"/>
 
     <Text GridPane.rowIndex="1" GridPane.columnIndex="0" text="Type"/>
-    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="searchTypeTextField" promptText="Search type"
-               onKeyTyped="#searchTypeOnKeyTyped"/>
-    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="typeComboBox" promptText="Select type"
-              onAction="#typeComboBoxOnAction"/>
+    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="typeComboBox" editable="true"
+              promptText="Select type" onAction="#typeComboBoxOnAction"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date"/>
     <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="datePicker" promptText="yyyy-mm-dd"/>
