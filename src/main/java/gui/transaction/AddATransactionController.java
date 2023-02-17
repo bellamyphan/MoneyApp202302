@@ -19,10 +19,12 @@ public class AddATransactionController {
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
+    private ComboBox<String> stateComboBox, cityComboBox;
+    @FXML
     private DatePicker datePicker;
     @FXML
     private TextField idTextField, searchTypeTextField, amountTextField, noteTextField, nameTextField,
-            cityTextField, stateTextField, primaryBankTextField, secondaryBankTextField, isPendingTextField;
+            primaryBankTextField, secondaryBankTextField, isPendingTextField;
     @FXML
     private Text feedBackText;
 
@@ -70,12 +72,12 @@ public class AddATransactionController {
             feedBackText.setText("Enter the name");
             return;
         }
-        if (cityTextField.getText().length() == 0) {
-            feedBackText.setText("Enter the city");
+        if (stateComboBox.getValue() == null) {
+            feedBackText.setText("Enter the state");
             return;
         }
-        if (stateTextField.getText().length() == 0) {
-            feedBackText.setText("Enter the state");
+        if (cityComboBox.getValue() == null) {
+            feedBackText.setText("Enter the city");
             return;
         }
         if (primaryBankTextField.getText().length() == 0) {

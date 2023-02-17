@@ -33,10 +33,10 @@
     <TextField GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="nameTextField" promptText="Enter name here"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Location"/>
-    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="cityTextField"
-               promptText="Enter city"/>
-    <TextField GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="stateTextField"
+    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="stateComboBox"
                promptText="Enter state"/>
+    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="cityComboBox"
+               promptText="Enter city"/>
 
     <Text GridPane.rowIndex="7" GridPane.columnIndex="0" text="Bank"/>
     <TextField GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankTextField"
