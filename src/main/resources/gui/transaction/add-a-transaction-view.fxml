@@ -11,35 +11,34 @@
           alignment="CENTER" hgap="20" vgap="20">
 
     <Text GridPane.rowIndex="0" GridPane.columnIndex="0" text="Id"/>
-    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" text="Auto-generated id" editable="false"/>
+    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Auto-generated id" editable="false"/>
 
     <Text GridPane.rowIndex="1" GridPane.columnIndex="0" text="Type"/>
-    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" text="Search type"
-               onKeyTyped="#searchTypeOnKeyTyped" onKeyReleased="#searchTypeOnKeyReleased"
-               onMouseClicked="#searchTypeOnMouseClicked"/>
-    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="typeComboBox"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Search type"
+               onKeyTyped="#searchTypeOnKeyTyped"/>
+    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="typeComboBox" promptText="Select type"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date"/>
     <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="dateDatePicker" promptText="yyyy-mm-dd"/>
 
     <Text GridPane.rowIndex="3" GridPane.columnIndex="0" text="Amount"/>
-    <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" text="Enter USD amount"/>
+    <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="Enter USD amount"/>
 
     <Text GridPane.rowIndex="4" GridPane.columnIndex="0" text="Note"/>
-    <TextField GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="2" text="Enter note here"/>
+    <TextField GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="2" promptText="Enter note here"/>
 
     <Text GridPane.rowIndex="5" GridPane.columnIndex="0" text="Name"/>
-    <TextField GridPane.rowIndex="5" GridPane.columnIndex="1" text="Enter name here"/>
+    <TextField GridPane.rowIndex="5" GridPane.columnIndex="1" promptText="Enter name here"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Location"/>
-    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" text="Enter location here"/>
+    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" promptText="Enter location here"/>
 
     <Text GridPane.rowIndex="7" GridPane.columnIndex="0" text="Bank"/>
-    <TextField GridPane.rowIndex="7" GridPane.columnIndex="1" text="Enter primary bank"/>
-    <TextField GridPane.rowIndex="7" GridPane.columnIndex="2" text="Enter secondary bank"/>
+    <TextField GridPane.rowIndex="7" GridPane.columnIndex="1" promptText="Enter primary bank"/>
+    <TextField GridPane.rowIndex="7" GridPane.columnIndex="2" promptText="Enter secondary bank"/>
 
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" text="Is pending?"/>
-    <TextField GridPane.rowIndex="8" GridPane.columnIndex="1" text="Yes or No"/>
+    <TextField GridPane.rowIndex="8" GridPane.columnIndex="1" promptText="Yes or No"/>
 
     <Button GridPane.rowIndex="9" GridPane.columnIndex="1" text="Review the transaction"/>
 
