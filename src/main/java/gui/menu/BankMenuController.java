@@ -17,7 +17,8 @@ public class BankMenuController {
     }
 
     @FXML
-    private void addABankOnAction() {
+    private void addABankOnAction(ActionEvent actionEvent) throws IOException {
+        new StageHandler().goToView(actionEvent, SystemConfiguration.addABankViewPath);
     }
 
     @FXML

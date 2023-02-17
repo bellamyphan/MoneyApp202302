@@ -8,4 +8,6 @@ module application {
     exports gui.menu;
     opens gui.transaction to javafx.fxml;
     exports gui.transaction;
+    opens gui.bank to javafx.fxml;
+    exports gui.bank;
 }

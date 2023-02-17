@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="gui.bank.AddABankController"
+          alignment="CENTER" hgap="20" vgap="20">
+    <Text text="This page is empty"/>
+</GridPane>
