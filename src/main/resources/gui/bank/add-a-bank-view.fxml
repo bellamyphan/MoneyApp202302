@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
 
 <GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="gui.bank.AddABankController"
           alignment="CENTER" hgap="20" vgap="20">
@@ -29,5 +30,8 @@
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Interest rate"/>
     <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" promptText="Enter the interest rate"/>
+
+    <Button GridPane.rowIndex="7" GridPane.columnIndex="0" text="Review bank"/>
+    <Text GridPane.rowIndex="8" GridPane.columnIndex="0"/>
 
 </GridPane>
