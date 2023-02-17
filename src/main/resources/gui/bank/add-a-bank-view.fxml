@@ -2,8 +2,32 @@
 
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
 
 <GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="gui.bank.AddABankController"
           alignment="CENTER" hgap="20" vgap="20">
-    <Text text="This page is empty"/>
+
+    <Text GridPane.rowIndex="0" GridPane.columnIndex="0" text="Bank"/>
+    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Enter the bank name"/>
+
+    <Text GridPane.rowIndex="1" GridPane.columnIndex="0" text="Website"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Enter the website"/>
+
+    <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Account Name"/>
+    <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Enter account name"/>
+
+    <Text GridPane.rowIndex="3" GridPane.columnIndex="0" text="Open date"/>
+    <DatePicker GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="yyyy-mm-dd"/>
+
+    <Text GridPane.rowIndex="4" GridPane.columnIndex="0" text="Close date"/>
+    <DatePicker GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="yyyy-mm-dd"/>
+
+    <Text GridPane.rowIndex="5" GridPane.columnIndex="0" text="Account type"/>
+    <ComboBox GridPane.rowIndex="5" GridPane.columnIndex="1" promptText="Select"/>
+
+    <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Interest rate"/>
+    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" promptText="Enter the interest rate"/>
+
 </GridPane>
