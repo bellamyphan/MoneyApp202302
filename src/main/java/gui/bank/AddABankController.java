@@ -1,8 +1,10 @@
 package gui.bank;
 
+import application.SystemConfiguration;
 import dao.bank.BankWriterDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -13,13 +15,15 @@ import objects.bank.BankObject;
 import objects.bank.BankType;
 import objects.bank.BankTypeHandler;
 import tools.DateHandler;
+import tools.StageHandler;
 import tools.StringHandler;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 
 public class AddABankController {
     @FXML
-    private Button confirmButton;
+    private Button confirmButton, reviewButton, goBackButton;
     @FXML
     private TextField bankNameTextField, websiteTextField, accountNameTextField, interestRateTextField;
     @FXML
@@ -65,12 +69,25 @@ public class AddABankController {
         if (interestRateTextField.getText().length() == 0) {
             interestRateTextField.setText("00.0000%");
         }
-        feedbackText.setText("");
+        feedbackText.setText("Click 'Confirm' to finish");
         confirmButton.setVisible(true);
     }
 
     @FXML
     private void confirmOnAction() {
+        // Finalized all input fields
+        bankNameTextField.setEditable(false);
+        websiteTextField.setEditable(false);
+        accountNameTextField.setEditable(false);
+        openDatePicker.setDisable(true);
+        closeDatePicker.setDisable(true);
+        accountTypeComboBox.setDisable(true);
+        interestRateTextField.setEditable(false);
+        reviewButton.setDisable(true);
+        goBackButton.setVisible(true);
+        confirmButton.setDisable(true);
+        feedbackText.setText("Bank added successfully");
+        // Add the bank to the database
         BankObject bankObject;
         if (closeDatePicker.getValue() != null) {
              bankObject = new BankObject(bankNameTextField.getText(), websiteTextField.getText(),
@@ -85,5 +102,10 @@ public class AddABankController {
                     new BigDecimal(StringHandler.getNumberString(interestRateTextField.getText())));
         }
         new BankWriterDao().addABankToDatabase(bankObject);
+    }
+
+    @FXML
+    private void goBackOnAction(ActionEvent actionEvent) throws IOException {
+        StageHandler.goToView(actionEvent, SystemConfiguration.bankMenuViewPath);
     }
 }
