@@ -39,10 +39,9 @@
                promptText="Enter city"/>
 
     <Text GridPane.rowIndex="7" GridPane.columnIndex="0" text="Bank"/>
-    <TextField GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankTextField"
-               promptText="Enter primary bank"/>
-    <TextField GridPane.rowIndex="7" GridPane.columnIndex="2" fx:id="secondaryBankTextField"
-               promptText="Enter secondary bank"/>
+    <ComboBox GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankComboBox"
+               promptText="Select primary bank"/>
+    <ComboBox GridPane.rowIndex="7" GridPane.columnIndex="2" promptText="Select secondary bank"/>
 
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" text="Is pending?"/>
     <ComboBox GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="isPendingComboBox" promptText="Select"/>

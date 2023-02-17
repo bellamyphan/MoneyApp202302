@@ -11,6 +11,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
+import objects.bank.BankObject;
 import objects.type.Type;
 import objects.type.TypeHandler;
 import tools.DateHandler;
@@ -26,10 +27,11 @@ public class AddATransactionController {
     @FXML
     private ComboBox<String> stateComboBox, cityComboBox, isPendingComboBox;
     @FXML
+    private ComboBox<BankObject> primaryBankComboBox;
+    @FXML
     private DatePicker datePicker;
     @FXML
-    private TextField idTextField, searchTypeTextField, amountTextField, noteTextField, nameTextField,
-            primaryBankTextField, secondaryBankTextField;
+    private TextField idTextField, searchTypeTextField, amountTextField, noteTextField, nameTextField;
     @FXML
     private Text feedBackText;
 
@@ -86,12 +88,8 @@ public class AddATransactionController {
             feedBackText.setText("Enter the city");
             return;
         }
-        if (primaryBankTextField.getText().length() == 0) {
-            feedBackText.setText("Enter primary bank");
-            return;
-        }
-        if (secondaryBankTextField.getText().length() == 0) {
-            feedBackText.setText("Enter secondary bank");
+        if (primaryBankComboBox.getValue() == null) {
+            feedBackText.setText("Select primary bank");
             return;
         }
         if (isPendingComboBox.getValue() == null) {

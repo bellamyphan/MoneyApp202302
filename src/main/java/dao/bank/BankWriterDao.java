@@ -38,10 +38,10 @@ public class BankWriterDao {
 
     private String[] getBankLine(BankObject bankObject) {
         String[] bankLine;
-        bankLine = new String[]{bankObject.getBankName(), bankObject.getWebsite(), bankObject.getAccountName(),
-                DateHandler.getDateString(bankObject.getOpenDate()),
-                DateHandler.getDateString(bankObject.getCloseDate()), bankObject.getAccountType().toString(),
-                bankObject.getInterestRate().toString()};
+        bankLine = new String[]{bankObject.bankName(), bankObject.website(), bankObject.accountName(),
+                DateHandler.getDateString(bankObject.openDate()),
+                DateHandler.getDateString(bankObject.closeDate()), bankObject.accountType().toString(),
+                bankObject.interestRate().toString()};
         return bankLine;
     }
 }
