@@ -34,7 +34,8 @@
     <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="interestRateTextField"
                promptText="Enter the interest rate"/>
 
-    <Button GridPane.rowIndex="7" GridPane.columnIndex="0" text="Review bank" onAction="#reviewBankOnAction"/>
+    <Button GridPane.rowIndex="7" GridPane.columnIndex="0" text="Review" onAction="#reviewOnAction"/>
+    <Button GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"/>
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" fx:id="feedbackText"/>
 
 </GridPane>

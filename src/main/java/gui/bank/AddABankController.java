@@ -3,6 +3,7 @@ package gui.bank;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -11,6 +12,8 @@ import objects.bank.BankType;
 import objects.bank.BankTypeHandler;
 
 public class AddABankController {
+    @FXML
+    private Button confirmButton;
     @FXML
     private TextField bankNameTextField, websiteTextField, accountNameTextField, interestRateTextField;
     @FXML
@@ -28,7 +31,7 @@ public class AddABankController {
     }
 
     @FXML
-    private void reviewBankOnAction() {
+    private void reviewOnAction() {
         if (bankNameTextField.getText().length() == 0) {
             feedbackText.setText("Enter bank name");
             return;
@@ -53,5 +56,6 @@ public class AddABankController {
             interestRateTextField.setText("00.0000%");
         }
         feedbackText.setText("");
+        confirmButton.setVisible(true);
     }
 }
