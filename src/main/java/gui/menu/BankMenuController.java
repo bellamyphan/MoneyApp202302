@@ -9,19 +9,19 @@ import java.io.IOException;
 
 public class BankMenuController {
     @FXML
-    public void showAllBanksOnAction() {
+    private void showAllBanksOnAction() {
     }
 
     @FXML
-    public void showAllBankBalancesOnAction() {
+    private void showAllBankBalancesOnAction() {
     }
 
     @FXML
-    public void addABankOnAction() {
+    private void addABankOnAction() {
     }
 
     @FXML
-    public void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
+    private void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
         new StageHandler().goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
     }
 }

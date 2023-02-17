@@ -4,6 +4,9 @@ public class SystemConfiguration {
     // Application title.
     public static final String applicationTitle = "Money App - Version 2023 02";
 
+    // Date format.
+    public static final String dateFormat = "yyyy-MM-dd";
+
     // Main application view path.
     public static final String applicationViewPath = "/application/application-view.fxml";
 
