@@ -45,7 +45,7 @@
                promptText="Enter secondary bank"/>
 
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" text="Is pending?"/>
-    <TextField GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="isPendingTextField" promptText="Yes or No"/>
+    <ComboBox GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="isPendingComboBox" promptText="Select"/>
 
     <Button GridPane.rowIndex="9" GridPane.columnIndex="0" text="Review" onAction="#reviewOnAction"/>
     <Button GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"/>

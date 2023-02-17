@@ -24,18 +24,19 @@ public class AddATransactionController {
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
-    private ComboBox<String> stateComboBox, cityComboBox;
+    private ComboBox<String> stateComboBox, cityComboBox, isPendingComboBox;
     @FXML
     private DatePicker datePicker;
     @FXML
     private TextField idTextField, searchTypeTextField, amountTextField, noteTextField, nameTextField,
-            primaryBankTextField, secondaryBankTextField, isPendingTextField;
+            primaryBankTextField, secondaryBankTextField;
     @FXML
     private Text feedBackText;
 
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
+        initializeIsPendingComboBox();
         DateHandler.formatDatePicker(datePicker);
     }
 
@@ -93,7 +94,7 @@ public class AddATransactionController {
             feedBackText.setText("Enter secondary bank");
             return;
         }
-        if (isPendingTextField.getText().length() == 0) {
+        if (isPendingComboBox.getValue() == null) {
             feedBackText.setText("Enter pending status");
             return;
         }
@@ -110,5 +111,11 @@ public class AddATransactionController {
         ObservableList<Type> typeObservableList = FXCollections.observableArrayList();
         typeObservableList.addAll(new TypeHandler().getTypeList(searchType));
         typeComboBox.setItems(typeObservableList);
+    }
+
+    private void initializeIsPendingComboBox() {
+        ObservableList<String> stringObservableList = FXCollections.observableArrayList();
+        stringObservableList.addAll("Yes", "No");
+        isPendingComboBox.setItems(stringObservableList);
     }
 }
