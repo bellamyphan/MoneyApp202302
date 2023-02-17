@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import objects.bank.BankHandler;
 import objects.bank.BankObject;
 import objects.location.UsaCityHandler;
 import objects.type.Type;
@@ -30,7 +31,7 @@ public class AddATransactionController {
     @FXML
     private ComboBox<String> stateComboBox, cityComboBox, isPendingComboBox;
     @FXML
-    private ComboBox<BankObject> primaryBankComboBox;
+    private ComboBox<BankObject> primaryBankComboBox, secondaryBankComboBox;
     @FXML
     private DatePicker datePicker;
     @FXML
@@ -47,6 +48,7 @@ public class AddATransactionController {
         initializeStateComboBox("");
         initializeIsPendingComboBox();
         initializeDatePicker();
+        initializePrimaryBankComboBox();
         DateHandler.formatDatePicker(datePicker);
     }
 
@@ -76,7 +78,13 @@ public class AddATransactionController {
     }
 
     @FXML
-    private void reviewOnAction() {
+    private void primaryBankComboBoxOnAction() {
+        secondaryBankComboBox.setDisable(false);
+        initializeSecondaryBankComboBox();
+    }
+
+    @FXML
+    private void reviewButtonOnAction() {
         // Generate the transaction id
         idTextField.setText("No data to generate the id");
         // Check all text fields
@@ -121,7 +129,7 @@ public class AddATransactionController {
     }
 
     @FXML
-    private void goBackOnAction(ActionEvent actionEvent) throws IOException {
+    private void goBackButtonOnAction(ActionEvent actionEvent) throws IOException {
         StageHandler.goToView(actionEvent, SystemConfiguration.transactionMenuViewPath);
     }
 
@@ -141,6 +149,18 @@ public class AddATransactionController {
         ObservableList<String> cityObservableList = FXCollections.observableArrayList();
         cityObservableList.addAll(new UsaCityHandler(stateCode).getCityNames(cityNameSearch));
         cityComboBox.setItems(cityObservableList);
+    }
+
+    private void initializePrimaryBankComboBox() {
+        ObservableList<BankObject> bankObservableList = FXCollections.observableArrayList();
+        bankObservableList.addAll(new BankHandler().getBanks());
+        primaryBankComboBox.setItems(bankObservableList);
+    }
+
+    private void initializeSecondaryBankComboBox() {
+        ObservableList<BankObject> bankObservableList = FXCollections.observableArrayList();
+        bankObservableList.addAll(new BankHandler().getBanksExclude(primaryBankComboBox.getValue()));
+        secondaryBankComboBox.setItems(bankObservableList);
     }
 
     private void initializeIsPendingComboBox() {
