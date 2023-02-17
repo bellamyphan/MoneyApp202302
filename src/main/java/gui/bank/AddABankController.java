@@ -1,5 +1,6 @@
 package gui.bank;
 
+import dao.bank.BankWriterDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,9 +9,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import objects.bank.BankObject;
 import objects.bank.BankType;
 import objects.bank.BankTypeHandler;
 import tools.DateHandler;
+import tools.StringHandler;
+
+import java.math.BigDecimal;
 
 public class AddABankController {
     @FXML
@@ -65,11 +70,20 @@ public class AddABankController {
     }
 
     @FXML
-    private void confirmOnAction(/*ActionEvent actionEvent*/) {
-//        BankObject bankObject = new BankObject(bankNameTextField.getText(), websiteTextField.getText(),
-//                accountNameTextField.getText(), new DateHandler().getJavaUtilDate(openDatePicker.getValue().toString()),
-//                new DateHandler().getJavaUtilDate(closeDatePicker.getValue().toString()),
-//                accountTypeComboBox.getValue(), Double.parseDouble(interestRateTextField.getText()));
-//        new BankWriterDao().addABankToDatabase(bankObject);
+    private void confirmOnAction() {
+        BankObject bankObject;
+        if (closeDatePicker.getValue() != null) {
+             bankObject = new BankObject(bankNameTextField.getText(), websiteTextField.getText(),
+                    accountNameTextField.getText(), DateHandler.getJavaUtilDate(openDatePicker.getValue().toString()),
+                    DateHandler.getJavaUtilDate(closeDatePicker.getValue().toString()),
+                    accountTypeComboBox.getValue(),
+                    new BigDecimal(StringHandler.getNumberString(interestRateTextField.getText())));
+        } else {
+            bankObject = new BankObject(bankNameTextField.getText(), websiteTextField.getText(),
+                    accountNameTextField.getText(), DateHandler.getJavaUtilDate(openDatePicker.getValue().toString()),
+                    null, accountTypeComboBox.getValue(),
+                    new BigDecimal(StringHandler.getNumberString(interestRateTextField.getText())));
+        }
+        new BankWriterDao().addABankToDatabase(bankObject);
     }
 }
