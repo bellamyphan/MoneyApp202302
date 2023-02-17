@@ -8,8 +8,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
-import objects.Type;
-import objects.TypeHandler;
+import objects.type.Type;
+import objects.type.TypeHandler;
 import tools.DateHandler;
 
 public class AddATransactionController {

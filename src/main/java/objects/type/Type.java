@@ -1,4 +1,4 @@
-package objects;
+package objects.type;
 
 public enum Type {
     INCOME_EARN, // Wages, salaries, tips, commissions.
