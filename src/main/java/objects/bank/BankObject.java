@@ -50,4 +50,13 @@ public class BankObject {
     public BigDecimal getInterestRate() {
         return interestRate;
     }
+
+    @Override
+    public String toString() {
+        return "BankObject{" +
+                "bankName='" + bankName + '\'' +
+                ", accountName='" + accountName + '\'' +
+                ", accountType=" + accountType +
+                '}';
+    }
 }
