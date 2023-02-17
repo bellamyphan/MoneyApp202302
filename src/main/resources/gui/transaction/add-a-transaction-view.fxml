@@ -35,7 +35,7 @@
     <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="stateComboBox" promptText="Enter state name/code"
               editable="true" onAction="#stateComboBoxOnAction"/>
     <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="cityComboBox" promptText="Enter city"
-              editable="true"/>
+              editable="true" disable="true"/>
 
     <Text GridPane.rowIndex="7" GridPane.columnIndex="0" text="Bank"/>
     <ComboBox GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankComboBox"

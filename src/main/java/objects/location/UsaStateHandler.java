@@ -16,8 +16,8 @@ public class UsaStateHandler {
     public List<String> getStateNames(String stateNameSearch) {
         List<String> resultList = new ArrayList<>();
         for (UsaStateObject state : states) {
-            if (state.getStateName().toLowerCase().contains(stateNameSearch.toLowerCase())) {
-                resultList.add(state.getStateName());
+            if (state.stateName().toLowerCase().contains(stateNameSearch.toLowerCase())) {
+                resultList.add(state.stateName());
             }
         }
         return resultList;
@@ -25,7 +25,7 @@ public class UsaStateHandler {
 
     public UsaStateObject getState(String stateNameSearch) {
         for (UsaStateObject state : states) {
-            if (state.getStateName().compareToIgnoreCase(stateNameSearch) == 0) {
+            if (state.stateName().compareToIgnoreCase(stateNameSearch) == 0) {
                 return state;
             }
         }
@@ -34,7 +34,7 @@ public class UsaStateHandler {
 
     public boolean isValidStateName(String stateName) {
         for (UsaStateObject state : states) {
-            if (state.getStateName().compareToIgnoreCase(stateName) == 0) {
+            if (state.stateName().compareToIgnoreCase(stateName) == 0) {
                 return true;
             }
         }

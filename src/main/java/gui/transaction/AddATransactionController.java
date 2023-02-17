@@ -11,6 +11,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import objects.bank.BankObject;
+import objects.location.UsaCityHandler;
 import objects.type.Type;
 import objects.type.TypeHandler;
 import tools.DateHandler;
@@ -64,11 +65,13 @@ public class AddATransactionController {
         String comboBoxValue = stateComboBox.getValue();
         UsaStateHandler stateHandler = new UsaStateHandler();
         selectedStateName = stateHandler.isValidStateName(comboBoxValue) ?
-                stateHandler.getState(comboBoxValue).getStateName() : null;
+                stateHandler.getState(comboBoxValue).stateName() : null;
         if (selectedStateName == null) {
             initializeStateComboBox(stateComboBox.getValue());
         } else {
             stateComboBox.setValue(selectedStateName);
+            cityComboBox.setDisable(false);
+            initializeCityComboBox(stateHandler.getState(selectedStateName).stateCode(), "");
         }
     }
 
@@ -132,6 +135,12 @@ public class AddATransactionController {
         ObservableList<String> stateObservableList = FXCollections.observableArrayList();
         stateObservableList.addAll(new UsaStateHandler().getStateNames(stateNameSearch));
         stateComboBox.setItems(stateObservableList);
+    }
+
+    private void initializeCityComboBox(String stateCode, String cityNameSearch) {
+        ObservableList<String> cityObservableList = FXCollections.observableArrayList();
+        cityObservableList.addAll(new UsaCityHandler(stateCode).getCityNames(cityNameSearch));
+        cityComboBox.setItems(cityObservableList);
     }
 
     private void initializeIsPendingComboBox() {
