@@ -1,7 +1,9 @@
 package gui.transaction;
 
+import application.SystemConfiguration;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -12,6 +14,9 @@ import javafx.scene.text.Text;
 import objects.type.Type;
 import objects.type.TypeHandler;
 import tools.DateHandler;
+import tools.StageHandler;
+
+import java.io.IOException;
 
 public class AddATransactionController {
     @FXML
@@ -94,6 +99,11 @@ public class AddATransactionController {
         }
         feedBackText.setText("");
         confirmButton.setVisible(true);
+    }
+
+    @FXML
+    private void goBackOnAction(ActionEvent actionEvent) throws IOException {
+        StageHandler.goToView(actionEvent, SystemConfiguration.transactionMenuViewPath);
     }
 
     private void initializeTypeComboBox(String searchType) {

@@ -49,6 +49,7 @@
 
     <Button GridPane.rowIndex="9" GridPane.columnIndex="0" text="Review" onAction="#reviewOnAction"/>
     <Button GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="2" text="Go back" onAction="#goBackOnAction"/>
     <Text GridPane.rowIndex="10" GridPane.columnIndex="1" fx:id="feedBackText"/>
 
 </GridPane>

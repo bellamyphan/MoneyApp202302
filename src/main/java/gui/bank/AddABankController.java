@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 
 public class AddABankController {
     @FXML
-    private Button confirmButton, reviewButton, goBackButton;
+    private Button confirmButton, reviewButton;
     @FXML
     private TextField bankNameTextField, websiteTextField, accountNameTextField, interestRateTextField;
     @FXML
@@ -84,7 +84,6 @@ public class AddABankController {
         accountTypeComboBox.setDisable(true);
         interestRateTextField.setEditable(false);
         reviewButton.setDisable(true);
-        goBackButton.setVisible(true);
         confirmButton.setDisable(true);
         feedbackText.setText("Bank added successfully");
         // Add the bank to the database
