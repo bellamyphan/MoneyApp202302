@@ -1,9 +1,12 @@
 package application;
 
+import java.util.Locale;
+
 public class SystemConfiguration {
     // System information
     public static final String applicationTitle = "Money App - Version 2023 02";
     public static final String dateFormat = "yyyy-MM-dd";
+    public static final Locale locale = Locale.US;
 
     // FXML view paths
     public static final String applicationViewPath = "/application/application-view.fxml";
@@ -15,4 +18,7 @@ public class SystemConfiguration {
 
     // Data paths
     public static final String bankDataPath = "data/banks.csv";
+    public static final String transactionDataPath = "data/transactions.csv";
+    public static final String usStatesPath = "data/usStates.csv";
+    public static final String usCitiesPath = "data/usCities.csv";
 }

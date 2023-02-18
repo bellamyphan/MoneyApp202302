@@ -11,13 +11,12 @@
           alignment="CENTER" hgap="20" vgap="20">
 
     <Text GridPane.rowIndex="0" GridPane.columnIndex="0" text="Id"/>
-    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="idTextField" text="Auto-generated id" editable="false"/>
+    <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="idTextField" text="Auto-generated id"
+               disable="true"/>
 
     <Text GridPane.rowIndex="1" GridPane.columnIndex="0" text="Type"/>
-    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="searchTypeTextField" promptText="Search type"
-               onKeyTyped="#searchTypeOnKeyTyped"/>
-    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="typeComboBox" promptText="Select type"
-              onAction="#typeComboBoxOnAction"/>
+    <ComboBox GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="typeComboBox" editable="true"
+              promptText="Select type" onAction="#typeComboBoxOnAction"/>
 
     <Text GridPane.rowIndex="2" GridPane.columnIndex="0" text="Date"/>
     <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="datePicker" promptText="yyyy-mm-dd"/>
@@ -33,20 +32,24 @@
     <TextField GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="nameTextField" promptText="Enter name here"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Location"/>
-    <TextField GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="locationTextField"
-               promptText="Enter location here"/>
+    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="stateComboBox" promptText="Enter state name/code"
+              editable="true" onAction="#stateComboBoxOnAction"/>
+    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="cityComboBox" promptText="Enter city"
+              editable="true" disable="true" onAction="#cityComboBoxOnAction"/>
 
     <Text GridPane.rowIndex="7" GridPane.columnIndex="0" text="Bank"/>
-    <TextField GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankTextField"
-               promptText="Enter primary bank"/>
-    <TextField GridPane.rowIndex="7" GridPane.columnIndex="2" fx:id="secondaryBankTextField"
-               promptText="Enter secondary bank"/>
+    <ComboBox GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankComboBox"
+               promptText="Select primary bank" onAction="#primaryBankComboBoxOnAction"/>
+    <ComboBox GridPane.rowIndex="7" GridPane.columnIndex="2" fx:id="secondaryBankComboBox"
+              promptText="Select secondary bank" disable="true"/>
 
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" text="Is pending?"/>
-    <TextField GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="isPendingTextField" promptText="Yes or No"/>
+    <ComboBox GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="isPendingComboBox" promptText="Select"/>
 
-    <Button GridPane.rowIndex="9" GridPane.columnIndex="0" text="Review" onAction="#reviewOnAction"/>
-    <Button GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="0" text="Review" onAction="#reviewButtonOnAction"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"
+            onAction="#confirmButtonOnAction"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="2" text="Go back" onAction="#goBackButtonOnAction"/>
     <Text GridPane.rowIndex="10" GridPane.columnIndex="1" fx:id="feedBackText"/>
 
 </GridPane>

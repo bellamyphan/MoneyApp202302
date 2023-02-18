@@ -45,12 +45,16 @@ public class DateHandler {
     }
 
     public static Date getJavaUtilDate(String dateString) {
-        Date date;
-        try {
-            date = simpleDateFormat.parse(dateString);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+        if (dateString != null && dateString.length() == 10) {
+            Date date;
+            try {
+                date = simpleDateFormat.parse(dateString);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            return date;
+        } else {
+            return null;
         }
-        return date;
     }
 }

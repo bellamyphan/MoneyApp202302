@@ -38,7 +38,7 @@
             onAction="#reviewOnAction"/>
     <Button GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"
             onAction="#confirmOnAction"/>
-    <Button GridPane.rowIndex="7" GridPane.columnIndex="2" fx:id="goBackButton" text="Go back" visible="false"
+    <Button GridPane.rowIndex="7" GridPane.columnIndex="2" text="Go back"
             onAction="#goBackOnAction"/>
     <Text GridPane.rowIndex="8" GridPane.columnIndex="0" fx:id="feedbackText"/>
 

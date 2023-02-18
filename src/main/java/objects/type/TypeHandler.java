@@ -20,4 +20,13 @@ public class TypeHandler {
         }
         return resultType;
     }
+
+    public Type getType(String typeString) {
+        for (Type type : typeList) {
+            if (type.toString().compareToIgnoreCase(typeString) == 0) {
+                return type;
+            }
+        }
+        return null;
+    }
 }

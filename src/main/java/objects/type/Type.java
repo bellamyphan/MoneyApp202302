@@ -32,5 +32,7 @@ public enum Type {
     CLOTHES,
     CHARITY,
     CURVE,
+    OTHER_TRANSFER,
+    OTHER_CREDIT_PAYMENT,
     OTHER
 }
