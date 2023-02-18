@@ -48,22 +48,27 @@ public class AddABankController {
     private void reviewOnAction() {
         if (bankNameTextField.getText().length() == 0) {
             feedbackText.setText("Enter bank name");
+            confirmButton.setVisible(false);
             return;
         }
         if (websiteTextField.getText().length() == 0) {
             feedbackText.setText("Enter bank website");
+            confirmButton.setVisible(false);
             return;
         }
         if (accountNameTextField.getText().length() == 0) {
             feedbackText.setText("Enter account name");
+            confirmButton.setVisible(false);
             return;
         }
         if (openDatePicker.getValue() == null) {
             feedbackText.setText("Select open date");
+            confirmButton.setVisible(false);
             return;
         }
         if (accountTypeComboBox.getValue() == null) {
             feedbackText.setText("Select account type");
+            confirmButton.setVisible(false);
             return;
         }
         if (interestRateTextField.getText().length() == 0) {
@@ -85,7 +90,6 @@ public class AddABankController {
         interestRateTextField.setEditable(false);
         reviewButton.setDisable(true);
         confirmButton.setDisable(true);
-        feedbackText.setText("Bank added successfully");
         // Add the bank to the database
         BankObject bankObject = new BankObject(bankNameTextField.getText(), websiteTextField.getText(),
                 accountNameTextField.getText(), DateHandler.getJavaUtilDate(openDatePicker.getValue().toString()),
@@ -94,6 +98,8 @@ public class AddABankController {
                 accountTypeComboBox.getValue(),
                 new BigDecimal(StringHandler.getNumberString(interestRateTextField.getText())));
         new BankWriterDao().addABankToDatabase(bankObject);
+        // Feedback
+        feedbackText.setText("Bank added successfully");
     }
 
     @FXML
