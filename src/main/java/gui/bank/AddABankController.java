@@ -81,13 +81,13 @@ public class AddABankController {
     @FXML
     private void confirmOnAction() {
         // Finalized all input fields
-        bankNameTextField.setEditable(false);
-        websiteTextField.setEditable(false);
-        accountNameTextField.setEditable(false);
+        bankNameTextField.setDisable(true);
+        websiteTextField.setDisable(true);
+        accountNameTextField.setDisable(true);
         openDatePicker.setDisable(true);
         closeDatePicker.setDisable(true);
         accountTypeComboBox.setDisable(true);
-        interestRateTextField.setEditable(false);
+        interestRateTextField.setDisable(true);
         reviewButton.setDisable(true);
         confirmButton.setDisable(true);
         // Add the bank to the database
