@@ -47,7 +47,8 @@
     <ComboBox GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="isPendingComboBox" promptText="Select"/>
 
     <Button GridPane.rowIndex="9" GridPane.columnIndex="0" text="Review" onAction="#reviewButtonOnAction"/>
-    <Button GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"/>
+    <Button GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="confirmButton" text="Confirm" visible="false"
+            onAction="#confirmButtonOnAction"/>
     <Button GridPane.rowIndex="9" GridPane.columnIndex="2" text="Go back" onAction="#goBackButtonOnAction"/>
     <Text GridPane.rowIndex="10" GridPane.columnIndex="1" fx:id="feedBackText"/>
 

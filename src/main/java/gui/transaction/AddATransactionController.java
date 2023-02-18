@@ -10,9 +10,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import objects.amount.AmountObject;
 import objects.bank.BankHandler;
 import objects.bank.BankObject;
+import objects.location.LocationObject;
 import objects.location.UsaCityHandler;
+import objects.transaction.TransactionObject;
 import objects.type.Type;
 import objects.type.TypeHandler;
 import tools.DateHandler;
@@ -20,6 +23,7 @@ import tools.StageHandler;
 import objects.location.UsaStateHandler;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -90,42 +94,74 @@ public class AddATransactionController {
         // Check all text fields
         if (selectedType == null) {
             feedBackText.setText("Select valid type");
+            confirmButton.setVisible(false);
             return;
         }
         if (datePicker.getValue() == null) {
             feedBackText.setText("Enter the date");
+            confirmButton.setVisible(false);
             return;
         }
         if (amountTextField.getText().length() == 0) {
             feedBackText.setText("Enter the amount");
+            confirmButton.setVisible(false);
             return;
         }
         if (noteTextField.getText().length() == 0) {
             feedBackText.setText("Enter the note");
+            confirmButton.setVisible(false);
             return;
         }
         if (nameTextField.getText().length() == 0) {
             feedBackText.setText("Enter the name");
+            confirmButton.setVisible(false);
             return;
         }
         if (selectedStateName == null) {
             feedBackText.setText("Select valid state");
+            confirmButton.setVisible(false);
             return;
         }
         if (cityComboBox.getValue() == null) {
             feedBackText.setText("Enter the city");
+            confirmButton.setVisible(false);
             return;
         }
         if (primaryBankComboBox.getValue() == null) {
             feedBackText.setText("Select primary bank");
+            confirmButton.setVisible(false);
             return;
         }
         if (isPendingComboBox.getValue() == null) {
             feedBackText.setText("Enter pending status");
+            confirmButton.setVisible(false);
             return;
         }
         feedBackText.setText("");
         confirmButton.setVisible(true);
+    }
+
+    @FXML
+    private void confirmButtonOnAction() {
+        typeComboBox.setDisable(true);
+        datePicker.setDisable(true);
+        amountTextField.setDisable(true);
+        noteTextField.setDisable(true);
+        nameTextField.setDisable(true);
+        stateComboBox.setDisable(true);
+        cityComboBox.setDisable(true);
+        primaryBankComboBox.setDisable(true);
+        secondaryBankComboBox.setDisable(true);
+        isPendingComboBox.setDisable(true);
+
+        TransactionObject newTransaction = new TransactionObject(0, null, typeComboBox.getValue(),
+                DateHandler.getJavaUtilDate(datePicker.getValue().toString()),
+                new AmountObject(new BigDecimal(amountTextField.getText())), noteTextField.getText(),
+                nameTextField.getText(), new LocationObject(cityComboBox.getValue(),
+                new UsaStateHandler().getState(stateComboBox.getValue())), primaryBankComboBox.getValue(),
+                secondaryBankComboBox.getValue(), Boolean.parseBoolean(isPendingComboBox.getValue()));
+
+        System.out.println(newTransaction);
     }
 
     @FXML
