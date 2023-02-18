@@ -23,9 +23,18 @@ public class UsaStateHandler {
         return resultList;
     }
 
-    public UsaStateObject getState(String stateNameSearch) {
+    public UsaStateObject getStateUsingStateName(String stateNameSearch) {
         for (UsaStateObject state : states) {
             if (state.stateName().compareToIgnoreCase(stateNameSearch) == 0) {
+                return state;
+            }
+        }
+        return null;
+    }
+
+    public UsaStateObject getStateUsingStateCode(String stateCodeSearch) {
+        for (UsaStateObject state : states) {
+            if (state.stateCode().compareToIgnoreCase(stateCodeSearch) == 0) {
                 return state;
             }
         }

@@ -27,4 +27,20 @@ public class BankHandler {
         }
         return resultList;
     }
+
+    public BankObject getBank(String bankNameAccountName) {
+        if (bankNameAccountName.length() > 0) {
+            String bankName = bankNameAccountName.split(" - ")[0];
+            String accountName = bankNameAccountName.split(" - ")[1];
+            if (banks != null) {
+                for (BankObject bank : banks) {
+                    if (bank.bankName().compareToIgnoreCase(bankName) == 0
+                            && bank.accountName().compareToIgnoreCase(accountName) == 0) {
+                        return bank;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }
