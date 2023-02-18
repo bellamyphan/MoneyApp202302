@@ -43,8 +43,14 @@ public class AddATransactionController {
     @FXML
     private Text feedBackText;
 
+    private final UsaStateHandler stateHandler;
     private Type selectedType;
     private String selectedStateName;
+    private String selectedCityName;
+
+    public AddATransactionController() {
+        stateHandler = new UsaStateHandler();
+    }
 
     @FXML
     private void initialize() {
@@ -69,15 +75,26 @@ public class AddATransactionController {
     @FXML
     private void stateComboBoxOnAction() {
         String comboBoxValue = stateComboBox.getValue();
-        UsaStateHandler stateHandler = new UsaStateHandler();
         selectedStateName = stateHandler.isValidStateName(comboBoxValue) ?
                 stateHandler.getState(comboBoxValue).stateName() : null;
         if (selectedStateName == null) {
-            initializeStateComboBox(stateComboBox.getValue());
+            initializeStateComboBox(comboBoxValue);
         } else {
             stateComboBox.setValue(selectedStateName);
             cityComboBox.setDisable(false);
             initializeCityComboBox(stateHandler.getState(selectedStateName).stateCode(), "");
+        }
+    }
+
+    @FXML
+    private void cityComboBoxOnAction() {
+        String comboBoxValue = cityComboBox.getValue();
+        UsaCityHandler cityHandler = new UsaCityHandler(selectedStateName);
+        selectedCityName = cityHandler.getCityName(comboBoxValue);
+        if (selectedCityName == null) {
+            initializeCityComboBox(stateHandler.getState(selectedStateName).stateCode(), comboBoxValue);
+        } else {
+            cityComboBox.setValue(selectedCityName);
         }
     }
 
@@ -122,8 +139,8 @@ public class AddATransactionController {
             confirmButton.setVisible(false);
             return;
         }
-        if (cityComboBox.getValue() == null) {
-            feedBackText.setText("Enter the city");
+        if (selectedCityName == null) {
+            feedBackText.setText("Select valid city");
             confirmButton.setVisible(false);
             return;
         }
@@ -158,7 +175,7 @@ public class AddATransactionController {
                 DateHandler.getJavaUtilDate(datePicker.getValue().toString()),
                 new AmountObject(new BigDecimal(amountTextField.getText())), noteTextField.getText(),
                 nameTextField.getText(), new LocationObject(cityComboBox.getValue(),
-                new UsaStateHandler().getState(stateComboBox.getValue())), primaryBankComboBox.getValue(),
+                stateHandler.getState(stateComboBox.getValue())), primaryBankComboBox.getValue(),
                 secondaryBankComboBox.getValue(), Boolean.parseBoolean(isPendingComboBox.getValue()));
 
         System.out.println(newTransaction);
@@ -177,7 +194,7 @@ public class AddATransactionController {
 
     private void initializeStateComboBox(String stateNameSearch) {
         ObservableList<String> stateObservableList = FXCollections.observableArrayList();
-        stateObservableList.addAll(new UsaStateHandler().getStateNames(stateNameSearch));
+        stateObservableList.addAll(stateHandler.getStateNames(stateNameSearch));
         stateComboBox.setItems(stateObservableList);
     }
 

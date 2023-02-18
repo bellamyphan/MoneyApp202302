@@ -21,4 +21,12 @@ public class UsaCityHandler {
         }
         return resultList;
     }
+
+    public String getCityName(String cityNameSearch) {
+        for (String cityName : cityNames) {
+            if (cityName.compareToIgnoreCase(cityNameSearch) == 0)
+                return cityName;
+        }
+        return null;
+    }
 }
