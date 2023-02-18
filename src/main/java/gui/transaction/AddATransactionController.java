@@ -89,12 +89,13 @@ public class AddATransactionController {
     @FXML
     private void cityComboBoxOnAction() {
         String comboBoxValue = cityComboBox.getValue();
-        UsaCityHandler cityHandler = new UsaCityHandler(selectedStateName);
+        UsaCityHandler cityHandler = new UsaCityHandler(stateHandler.getState(selectedStateName).stateCode());
         selectedCityName = cityHandler.getCityName(comboBoxValue);
         if (selectedCityName == null) {
             initializeCityComboBox(stateHandler.getState(selectedStateName).stateCode(), comboBoxValue);
         } else {
             cityComboBox.setValue(selectedCityName);
+            stateComboBox.setDisable(true);
         }
     }
 
@@ -160,25 +161,25 @@ public class AddATransactionController {
 
     @FXML
     private void confirmButtonOnAction() {
+        // Finalize all input fields
         typeComboBox.setDisable(true);
         datePicker.setDisable(true);
         amountTextField.setDisable(true);
         noteTextField.setDisable(true);
         nameTextField.setDisable(true);
-        stateComboBox.setDisable(true);
         cityComboBox.setDisable(true);
         primaryBankComboBox.setDisable(true);
         secondaryBankComboBox.setDisable(true);
         isPendingComboBox.setDisable(true);
-
+        // Create a transaction object
         TransactionObject newTransaction = new TransactionObject(0, null, typeComboBox.getValue(),
                 DateHandler.getJavaUtilDate(datePicker.getValue().toString()),
                 new AmountObject(new BigDecimal(amountTextField.getText())), noteTextField.getText(),
                 nameTextField.getText(), new LocationObject(cityComboBox.getValue(),
                 stateHandler.getState(stateComboBox.getValue())), primaryBankComboBox.getValue(),
                 secondaryBankComboBox.getValue(), Boolean.parseBoolean(isPendingComboBox.getValue()));
-
-        System.out.println(newTransaction);
+        // Feedback
+        feedBackText.setText("Transaction added successfully");
     }
 
     @FXML
