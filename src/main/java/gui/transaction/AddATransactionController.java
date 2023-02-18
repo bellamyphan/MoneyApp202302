@@ -1,6 +1,7 @@
 package gui.transaction;
 
 import application.SystemConfiguration;
+import dao.transaction.TransactionWriterDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import objects.location.UsaCityHandler;
 import objects.transaction.TransactionObject;
 import objects.type.Type;
 import objects.type.TypeHandler;
+import tools.BooleanHandler;
 import tools.DateHandler;
 import tools.StageHandler;
 import objects.location.UsaStateHandler;
@@ -171,13 +173,14 @@ public class AddATransactionController {
         primaryBankComboBox.setDisable(true);
         secondaryBankComboBox.setDisable(true);
         isPendingComboBox.setDisable(true);
-        // Create a transaction object
+        // Add transaction to the database
         TransactionObject newTransaction = new TransactionObject(0, null, typeComboBox.getValue(),
                 DateHandler.getJavaUtilDate(datePicker.getValue().toString()),
                 new AmountObject(new BigDecimal(amountTextField.getText())), noteTextField.getText(),
                 nameTextField.getText(), new LocationObject(cityComboBox.getValue(),
                 stateHandler.getState(stateComboBox.getValue())), primaryBankComboBox.getValue(),
-                secondaryBankComboBox.getValue(), Boolean.parseBoolean(isPendingComboBox.getValue()));
+                secondaryBankComboBox.getValue(), BooleanHandler.getBooleanValueFromString(isPendingComboBox.getValue()));
+        new TransactionWriterDao().addATransactionToDatabase(newTransaction);
         // Feedback
         feedBackText.setText("Transaction added successfully");
     }

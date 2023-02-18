@@ -26,7 +26,6 @@ public class BankWriterDao {
     }
 
     public void addABankToDatabase(BankObject bankObject) {
-        // Add the bank to database
         try (FileWriter fileWriter = new FileWriter(SystemConfiguration.bankDataPath, true);
              CSVWriter csvWriter = new CSVWriter(fileWriter)) {
             String[] bankLine = getBankLine(bankObject);
