@@ -8,6 +8,7 @@ import objects.bank.BankType;
 import tools.DateHandler;
 import tools.DoubleQuoteHandler;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -16,25 +17,26 @@ import java.util.Date;
 import java.util.List;
 
 public class BankReaderDao {
-    private final List<BankObject> banks;
+    private List<BankObject> banks;
 
     public BankReaderDao() {
-        // Create empty banks list.
-        banks = new ArrayList<>();
-        // Read the csv data file.
-        try (FileReader fileReader = new FileReader(SystemConfiguration.bankDataPath);
-             CSVReader csvReader = new CSVReader(fileReader)) {
-            String[] bankLine;
-            boolean skipHeaderLine = true;
-            while ((bankLine = csvReader.readNext()) != null) {
-                if (skipHeaderLine) {
-                    skipHeaderLine = false;
-                    continue;
+        File bankFile = new File(SystemConfiguration.bankDataPath);
+        if (bankFile.exists()) {
+            banks = new ArrayList<>();
+            try (FileReader fileReader = new FileReader(SystemConfiguration.bankDataPath);
+                 CSVReader csvReader = new CSVReader(fileReader)) {
+                String[] bankLine;
+                boolean skipHeaderLine = true;
+                while ((bankLine = csvReader.readNext()) != null) {
+                    if (skipHeaderLine) {
+                        skipHeaderLine = false;
+                        continue;
+                    }
+                    banks.add(getBankFromBankLine(bankLine));
                 }
-                banks.add(getBankFromBankLine(bankLine));
+            } catch (IOException | CsvValidationException e) {
+                throw new RuntimeException(e);
             }
-        } catch (IOException | CsvValidationException e) {
-            throw new RuntimeException(e);
         }
     }
 

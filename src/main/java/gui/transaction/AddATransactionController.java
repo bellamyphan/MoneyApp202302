@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class AddATransactionController {
     @FXML
@@ -209,9 +210,14 @@ public class AddATransactionController {
     }
 
     private void initializePrimaryBankComboBox() {
-        ObservableList<BankObject> bankObservableList = FXCollections.observableArrayList();
-        bankObservableList.addAll(new BankHandler().getBanks());
-        primaryBankComboBox.setItems(bankObservableList);
+        List<BankObject> banks = new BankHandler().getBanks();
+        if (banks != null) {
+            ObservableList<BankObject> bankObservableList = FXCollections.observableArrayList();
+            bankObservableList.addAll(banks);
+            primaryBankComboBox.setItems(bankObservableList);
+        } else {
+            feedBackText.setText("No banks on record");
+        }
     }
 
     private void initializeSecondaryBankComboBox() {
