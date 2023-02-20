@@ -52,9 +52,7 @@ public class AddABankController {
             return;
         }
         if (websiteTextField.getText().length() == 0) {
-            feedbackText.setText("Enter bank website");
-            confirmButton.setVisible(false);
-            return;
+            websiteTextField.setPromptText("Warning - Empty link");
         }
         if (accountNameTextField.getText().length() == 0) {
             feedbackText.setText("Enter account name");
