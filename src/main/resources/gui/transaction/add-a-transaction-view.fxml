@@ -30,7 +30,9 @@
                promptText="Select or enter note" editable="true"/>
 
     <Text GridPane.rowIndex="5" GridPane.columnIndex="0" text="Name"/>
-    <TextField GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="nameTextField" promptText="Enter name here"/>
+    <ComboBox GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="nameComboBox" promptText="Enter name here"
+              editable="true"/>
+    <Button GridPane.rowIndex="5" GridPane.columnIndex="2" text="Filter by Type"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Location"/>
     <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="stateComboBox" promptText="Enter state name/code"
