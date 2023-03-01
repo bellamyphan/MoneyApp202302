@@ -3,6 +3,7 @@ package dao.transaction;
 import application.SystemConfiguration;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
+import dao.bank.BankReaderDao;
 import objects.amount.AmountObject;
 import objects.bank.BankHandler;
 import objects.bank.BankObject;
@@ -25,9 +26,12 @@ import java.util.List;
 public class TransactionReaderDao {
 
     private final List<TransactionObject> transactions;
+    private final BankHandler bankHandler;
 
     public TransactionReaderDao() {
         transactions = new ArrayList<>();
+        List<BankObject> banks = new BankReaderDao().getBanks();
+        bankHandler = new BankHandler(banks);
         File transactionFile = new File(SystemConfiguration.transactionDataPath);
         if (transactionFile.exists()) {
             try (FileReader fileReader = new FileReader(SystemConfiguration.transactionDataPath);
@@ -63,8 +67,8 @@ public class TransactionReaderDao {
         String note = DoubleQuoteHandler.removeDoubleQuote(transactionLine[5]);
         String name = DoubleQuoteHandler.removeDoubleQuote(transactionLine[6]);
         LocationObject location = new LocationObject(DoubleQuoteHandler.removeDoubleQuote(transactionLine[7]));
-        BankObject primaryBank = new BankHandler().getBank(DoubleQuoteHandler.removeDoubleQuote(transactionLine[8]));
-        BankObject secondaryBank = new BankHandler().getBank(DoubleQuoteHandler.removeDoubleQuote(transactionLine[9]));
+        BankObject primaryBank = bankHandler.getBank(DoubleQuoteHandler.removeDoubleQuote(transactionLine[8]));
+        BankObject secondaryBank = bankHandler.getBank(DoubleQuoteHandler.removeDoubleQuote(transactionLine[9]));
         Boolean isPending = BooleanHandler.getBooleanValueFromString(
                 DoubleQuoteHandler.removeDoubleQuote(transactionLine[10]));
         return new TransactionObject(id, parentId, type, date, amount, note, name, location,

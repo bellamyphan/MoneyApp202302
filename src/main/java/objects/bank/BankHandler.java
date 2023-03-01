@@ -1,19 +1,13 @@
 package objects.bank;
 
-import dao.bank.BankReaderDao;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BankHandler {
     private final List<BankObject> banks;
 
-    public BankHandler() {
-        banks = new BankReaderDao().getBanks();
-    }
-
-    public List<BankObject> getBanks() {
-        return banks;
+    public BankHandler(List<BankObject> banks) {
+        this.banks = banks;
     }
 
     public List<BankObject> getBanksExclude(BankObject bankObject) {
@@ -30,8 +24,9 @@ public class BankHandler {
 
     public BankObject getBank(String bankNameAccountName) {
         if (bankNameAccountName.length() > 0) {
-            String bankName = bankNameAccountName.split(" - ")[0];
-            String accountName = bankNameAccountName.split(" - ")[1];
+            String[] splitStrings = bankNameAccountName.split(" - ");
+            String bankName = splitStrings[0];
+            String accountName = splitStrings[1];
             if (banks != null) {
                 for (BankObject bank : banks) {
                     if (bank.bankName().compareToIgnoreCase(bankName) == 0
