@@ -16,6 +16,7 @@ import objects.bank.BankHandler;
 import objects.bank.BankObject;
 import objects.location.LocationObject;
 import objects.location.UsaCityHandler;
+import objects.note.NoteHandler;
 import objects.transaction.TransactionHandler;
 import objects.transaction.TransactionObject;
 import objects.type.Type;
@@ -29,6 +30,7 @@ import objects.location.UsaStateHandler;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -38,13 +40,13 @@ public class AddATransactionController {
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
-    private ComboBox<String> stateComboBox, cityComboBox, isPendingComboBox;
+    private ComboBox<String> stateComboBox, cityComboBox, isPendingComboBox, noteComboBox;
     @FXML
     private ComboBox<BankObject> primaryBankComboBox, secondaryBankComboBox;
     @FXML
     private DatePicker datePicker;
     @FXML
-    private TextField idTextField, amountTextField, noteTextField, nameTextField;
+    private TextField idTextField, amountTextField, nameTextField;
     @FXML
     private Text finalFeedbackText, bankFeedbackText, typeFeedbackText;
 
@@ -75,6 +77,7 @@ public class AddATransactionController {
         } else {
             typeComboBox.setValue(selectedType);
             typeFeedbackText.setText(new TypeDescription(selectedType).getDescription());
+            initializeNoteComboBox();
         }
     }
 
@@ -131,7 +134,7 @@ public class AddATransactionController {
             confirmButton.setVisible(false);
             return;
         }
-        if (noteTextField.getText().length() == 0) {
+        if (noteComboBox.getValue().length() == 0) {
             finalFeedbackText.setText("Enter the note");
             confirmButton.setVisible(false);
             return;
@@ -171,7 +174,7 @@ public class AddATransactionController {
         typeComboBox.setDisable(true);
         datePicker.setDisable(true);
         amountTextField.setDisable(true);
-        noteTextField.setDisable(true);
+        noteComboBox.setDisable(true);
         nameTextField.setDisable(true);
         cityComboBox.setDisable(true);
         primaryBankComboBox.setDisable(true);
@@ -180,7 +183,7 @@ public class AddATransactionController {
         // Add transaction to the database
         TransactionObject newTransaction = new TransactionObject(Integer.parseInt(idTextField.getText()), null,
                 typeComboBox.getValue(), DateHandler.getJavaUtilDate(datePicker.getValue().toString()),
-                new AmountObject(new BigDecimal(amountTextField.getText())), noteTextField.getText(),
+                new AmountObject(new BigDecimal(amountTextField.getText())), noteComboBox.getValue(),
                 nameTextField.getText(), new LocationObject(cityComboBox.getValue(),
                 stateHandler.getStateUsingStateName(stateComboBox.getValue())), primaryBankComboBox.getValue(),
                 secondaryBankComboBox.getValue(), BooleanHandler.getBooleanValueFromString(isPendingComboBox.getValue()));
@@ -233,6 +236,14 @@ public class AddATransactionController {
         ObservableList<String> stringObservableList = FXCollections.observableArrayList();
         stringObservableList.addAll("Yes", "No");
         isPendingComboBox.setItems(stringObservableList);
+    }
+
+    private void initializeNoteComboBox() {
+        ObservableList<String> stringObservableList = FXCollections.observableArrayList();
+        List<String> notes = NoteHandler.getNoteStringList(selectedType);
+        Collections.reverse(notes);
+        stringObservableList.addAll(notes);
+        noteComboBox.setItems(stringObservableList);
     }
 
     private void initializeDatePicker() {
