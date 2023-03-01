@@ -1,6 +1,7 @@
 package gui.transaction;
 
 import application.SystemConfiguration;
+import dao.bank.BankReaderDao;
 import dao.transaction.TransactionReaderDao;
 import dao.transaction.TransactionWriterDao;
 import javafx.collections.FXCollections;
@@ -52,6 +53,8 @@ public class AddATransactionController {
     private Text finalFeedbackText, bankFeedbackText, typeFeedbackText;
 
     private final List<TransactionObject> transactions;
+    private final List<BankObject> banks;
+    private final BankHandler bankHandler;
     private final UsaStateHandler stateHandler;
     private Type selectedType;
     private String selectedStateName;
@@ -60,6 +63,8 @@ public class AddATransactionController {
     public AddATransactionController() {
         stateHandler = new UsaStateHandler();
         transactions = new TransactionReaderDao().getTransactions();
+        banks = new BankReaderDao().getBanks();
+        bankHandler = new BankHandler(banks);
     }
 
     @FXML
@@ -219,7 +224,6 @@ public class AddATransactionController {
     }
 
     private void initializePrimaryBankComboBox() {
-        List<BankObject> banks = new BankHandler().getBanks();
         if (banks != null && banks.size() > 0) {
             ObservableList<BankObject> bankObservableList = FXCollections.observableArrayList();
             bankObservableList.addAll(banks);
@@ -231,7 +235,7 @@ public class AddATransactionController {
 
     private void initializeSecondaryBankComboBox() {
         ObservableList<BankObject> bankObservableList = FXCollections.observableArrayList();
-        bankObservableList.addAll(new BankHandler().getBanksExclude(primaryBankComboBox.getValue()));
+        bankObservableList.addAll(bankHandler.getBanksExclude(primaryBankComboBox.getValue()));
         secondaryBankComboBox.setItems(bankObservableList);
     }
 
