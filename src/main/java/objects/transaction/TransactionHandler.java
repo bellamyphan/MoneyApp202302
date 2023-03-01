@@ -1,7 +1,9 @@
 package objects.transaction;
 
 import dao.transaction.TransactionReaderDao;
+import objects.type.Type;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TransactionHandler {
@@ -16,5 +18,15 @@ public class TransactionHandler {
             return 0;
         else
             return transactions.get(transactions.size() - 1).getId() + 1;
+    }
+
+    public List<TransactionObject> getTransactions(Type type) {
+        ArrayList<TransactionObject> transactionList = new ArrayList<>();
+        for (TransactionObject transaction : transactions) {
+            if (transaction.getType() == type) {
+                transactionList.add(transaction);
+            }
+        }
+        return transactionList;
     }
 }
