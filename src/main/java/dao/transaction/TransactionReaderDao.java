@@ -60,7 +60,8 @@ public class TransactionReaderDao {
         String parentIdString = DoubleQuoteHandler.removeDoubleQuote(transactionLine[1]);
         Integer parentId = parentIdString.length() == 0 ? null : Integer.parseInt(parentIdString);
         Type type = Type.valueOf(DoubleQuoteHandler.removeDoubleQuote(transactionLine[2]));
-        Date date = DateHandler.getJavaUtilDate(DoubleQuoteHandler.removeDoubleQuote(transactionLine[3]));
+        Date date = DateHandler.getJavaUtilDateFromYearMonthDayString(
+                DoubleQuoteHandler.removeDoubleQuote(transactionLine[3]));
         String currencyString = DoubleQuoteHandler.removeDoubleQuote(transactionLine[4]);
         AmountObject amount =
                 new AmountObject(new BigDecimal(StringHandler.getNumberString(currencyString)));

@@ -10,9 +10,9 @@
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="gui.menu.ReportMenuController" alignment="CENTER" spacing="20">
     <HBox alignment="CENTER" spacing="20">
         <VBox alignment="CENTER" spacing="20">
-            <Button text="Input Month"/>
-            <Button text="Input Year"/>
-            <Button text="Start Month - End Month"/>
+            <Button text="Input Month" onAction="#inputMonthButtonOnAction"/>
+            <Button fx:id="inputYearButton" text="Input Year"/>
+            <Button fx:id="startMonthEndMonthButton" text="Start Month - End Month"/>
         </VBox>
 
         <VBox alignment="CENTER" spacing="20" disable="true">
@@ -26,20 +26,21 @@
             </HBox>
         </VBox>
 
-        <VBox alignment="CENTER" spacing="20" disable="true">
+        <VBox alignment="CENTER" spacing="20">
             <HBox alignment="CENTER" spacing="20">
-                <Label text="Start date"/>
-                <TextField promptText="yyyy-mm"/>
+                <Label fx:id="startDateLabel" text="Start date" disable="true"/>
+                <TextField fx:id="startDateTextField" promptText="yyyy-mm" disable="true"
+                           onAction="#startDateTextFieldOnAction"/>
             </HBox>
             <HBox alignment="CENTER" spacing="20">
-                <Label text="End date"/>
-                <TextField promptText="yyyy-mm"/>
+                <Label text="End date" disable="true"/>
+                <TextField promptText="yyyy-mm" disable="true"/>
             </HBox>
         </VBox>
     </HBox>
 
     <HBox alignment="CENTER" spacing="20">
-        <Button text="Confirm" disable="true"/>
+        <Button fx:id="confirmButton" text="Confirm" disable="true"/>
         <Button text="Exit this menu" onAction="#exitThisMenuOnAction"/>
     </HBox>
 </VBox>

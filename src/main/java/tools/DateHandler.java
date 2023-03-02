@@ -8,11 +8,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateHandler {
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(SystemConfiguration.dateFormat);
-    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(SystemConfiguration.dateFormat);
+    private static final DateTimeFormatter dateTimeFormatter =
+            DateTimeFormatter.ofPattern(SystemConfiguration.dateFormat);
+    private static final SimpleDateFormat simpleDateFormat =
+            new SimpleDateFormat(SystemConfiguration.dateFormat);
 
     public static void formatDatePicker(DatePicker datePicker) {
         datePicker.setConverter(new StringConverter<>() {
@@ -44,11 +47,42 @@ public class DateHandler {
         }
     }
 
-    public static Date getJavaUtilDate(String dateString) {
+    public static String getYear(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return String.valueOf(calendar.get(Calendar.YEAR));
+    }
+
+    public static String getMonth(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        if (month < 10) {
+            return "" + '0' + month;
+        } else {
+            return "" + month;
+        }
+    }
+
+    public static Date getJavaUtilDateFromYearMonthDayString(String dateString) {
         if (dateString != null && dateString.length() == 10) {
             Date date;
             try {
                 date = simpleDateFormat.parse(dateString);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            return date;
+        } else {
+            return null;
+        }
+    }
+
+    public static Date getJavaUtilDateFromYearMonthString(String dateString) {
+        if (dateString != null && dateString.length() == 7) {
+            Date date;
+            try {
+                date = simpleDateFormat.parse(dateString + "-01");
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
