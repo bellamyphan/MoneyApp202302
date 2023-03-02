@@ -13,6 +13,7 @@ public class SystemConfiguration {
     public static final String bankMenuViewPath = "/gui/menu/bank-menu-view.fxml";
     public static final String mainMenuViewPath = "/gui/menu/main-menu-view.fxml";
     public static final String transactionMenuViewPath = "/gui/menu/transaction-menu-view.fxml";
+    public static final String reportMenuViewPath = "/gui/menu/report-menu-view.fxml";
     public static final String addATransactionViewPath = "/gui/transaction/add-a-transaction-view.fxml";
     public static final String addABankViewPath = "/gui/bank/add-a-bank-view.fxml";
 
