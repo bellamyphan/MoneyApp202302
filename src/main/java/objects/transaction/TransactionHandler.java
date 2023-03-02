@@ -19,10 +19,20 @@ public class TransactionHandler {
             return transactions.get(transactions.size() - 1).getId() + 1;
     }
 
-    public List<TransactionObject> getTransactions(Type type) {
+    public List<TransactionObject> getTransactionsFilterByType(Type type) {
         ArrayList<TransactionObject> transactionList = new ArrayList<>();
         for (TransactionObject transaction : transactions) {
             if (transaction.getType() == type) {
+                transactionList.add(transaction);
+            }
+        }
+        return transactionList;
+    }
+
+    public List<TransactionObject> getTransactionsFilterByName(String name) {
+        ArrayList<TransactionObject> transactionList = new ArrayList<>();
+        for (TransactionObject transaction : transactions) {
+            if (transaction.getName().compareToIgnoreCase(name) == 0) {
                 transactionList.add(transaction);
             }
         }

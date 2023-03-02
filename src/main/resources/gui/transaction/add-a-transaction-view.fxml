@@ -31,15 +31,15 @@
 
     <Text GridPane.rowIndex="5" GridPane.columnIndex="0" text="Name"/>
     <ComboBox GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="nameComboBox" promptText="Enter name here"
-              editable="true"/>
+              editable="true" onAction="#nameComboBoxOnAction"/>
     <Button GridPane.rowIndex="5" GridPane.columnIndex="2" fx:id="typeFilterButton" text="Filter by Type" disable="true"
             onAction="#typeFilterButtonOnAction"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Location"/>
-    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="stateComboBox" promptText="Enter state name/code"
-              editable="true" onAction="#stateComboBoxOnAction"/>
-    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="cityComboBox" promptText="Enter city"
-              editable="true" disable="true" onAction="#cityComboBoxOnAction"/>
+    <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="locationComboBox" promptText="City StateCode"
+              editable="true" onAction="#locationComboBoxOnAction"/>
+    <Button GridPane.rowIndex="6" GridPane.columnIndex="2" fx:id="nameFilterButton" text="Filter by Name" disable="true"
+            onAction="#nameFilterButtonOnAction"/>
 
     <Text GridPane.rowIndex="7" GridPane.columnIndex="0" text="Bank"/>
     <ComboBox GridPane.rowIndex="7" GridPane.columnIndex="1" fx:id="primaryBankComboBox"
