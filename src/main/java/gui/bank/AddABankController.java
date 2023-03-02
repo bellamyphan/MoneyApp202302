@@ -52,9 +52,7 @@ public class AddABankController {
             return;
         }
         if (websiteTextField.getText().length() == 0) {
-            feedbackText.setText("Enter bank website");
-            confirmButton.setVisible(false);
-            return;
+            websiteTextField.setPromptText("Warning - Empty link");
         }
         if (accountNameTextField.getText().length() == 0) {
             feedbackText.setText("Enter account name");
@@ -81,13 +79,13 @@ public class AddABankController {
     @FXML
     private void confirmOnAction() {
         // Finalized all input fields
-        bankNameTextField.setEditable(false);
-        websiteTextField.setEditable(false);
-        accountNameTextField.setEditable(false);
+        bankNameTextField.setDisable(true);
+        websiteTextField.setDisable(true);
+        accountNameTextField.setDisable(true);
         openDatePicker.setDisable(true);
         closeDatePicker.setDisable(true);
         accountTypeComboBox.setDisable(true);
-        interestRateTextField.setEditable(false);
+        interestRateTextField.setDisable(true);
         reviewButton.setDisable(true);
         confirmButton.setDisable(true);
         // Add the bank to the database

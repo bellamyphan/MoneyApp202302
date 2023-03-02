@@ -1,0 +1,6 @@
+"Transaction Id","Parent Id","Type","Date","Amount","Note","Name","Location","Primary Bank","Secondary Bank","Pending"
+"0","","INCOME_EARN","2018-10-01","$1,000.00","Working at my parent's chicken farm","CF Farm","Mount Vernon TX","First National Bank of Mount Vernon - Personal Checking","","false"
+"1","","INCOME_EARN","2018-10-01","$445.43","Part-time grocery stocker","Brookshire's Grocery Company","Mount Vernon TX","First National Bank of Mount Vernon - Personal Checking","","false"
+"2","","SHOP_ELECTRONICS","2018-10-01","-$1,120.53","Desktop XPS, Monitor, Speaker","Dell Computer Corporation","Round Rock TX","First National Bank of Mount Vernon - Personal Checking","","false"
+"3","","DINING","2018-10-01","-$2.14","Snacks","Northeast Texas Community College","Mount Pleasant TX","First National Bank of Mount Vernon - Personal Checking","","false"
+"4","","CAR_GAS_TOLL","2018-10-01","-$45.54","Commute to work and school","Brookshire's Grocery Company","Mount Vernon TX","First National Bank of Mount Vernon - Personal Checking","","false"

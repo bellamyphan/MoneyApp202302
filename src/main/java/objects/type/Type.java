@@ -1,12 +1,12 @@
 package objects.type;
 
 public enum Type {
-    INCOME_EARN, // Wages, salaries, tips, commissions.
-    INCOME_PASSIVE, // Rental properties.
-    INCOME_PORTFOLIO, // Investment dividends, capital gains, interests.
-    TAX_EARN, // Income tax, payroll tax, capital gain tax.
-    TAX_BUY, // Sale tax.
-    TAX_OWN, // Property tax.
+    INCOME_EARN,
+    INCOME_PASSIVE,
+    INCOME_PORTFOLIO,
+    TAX_EARN,
+    TAX_BUY,
+    TAX_OWN,
     INVEST_STOCK,
     INVEST_REAL_ESTATE,
     INVEST_SAVING,
