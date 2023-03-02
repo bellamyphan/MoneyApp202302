@@ -16,8 +16,8 @@ import javafx.scene.text.Text;
 import objects.amount.AmountObject;
 import objects.bank.BankHandler;
 import objects.bank.BankObject;
+import objects.location.LocationHandler;
 import objects.location.LocationObject;
-import objects.location.UsaCityHandler;
 import objects.name.NameHandler;
 import objects.note.NoteHandler;
 import objects.transaction.TransactionHandler;
@@ -28,7 +28,6 @@ import objects.type.TypeHandler;
 import tools.BooleanHandler;
 import tools.DateHandler;
 import tools.StageHandler;
-import objects.location.UsaStateHandler;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -39,11 +38,11 @@ import java.util.List;
 
 public class AddATransactionController {
     @FXML
-    private Button confirmButton, typeFilterButton;
+    private Button confirmButton, typeFilterButton, nameFilterButton;
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
-    private ComboBox<String> stateComboBox, cityComboBox, isPendingComboBox, noteComboBox, nameComboBox;
+    private ComboBox<String> locationComboBox, isPendingComboBox, noteComboBox, nameComboBox;
     @FXML
     private ComboBox<BankObject> primaryBankComboBox, secondaryBankComboBox;
     @FXML
@@ -57,13 +56,10 @@ public class AddATransactionController {
     private final List<BankObject> banks;
     private final BankHandler bankHandler;
     private final TransactionHandler transactionHandler;
-    private final UsaStateHandler stateHandler;
     private Type selectedType;
-    private String selectedStateName;
-    private String selectedCityName;
+    private LocationObject selectedLocation;
 
     public AddATransactionController() {
-        stateHandler = new UsaStateHandler();
         transactions = new TransactionReaderDao().getTransactions();
         transactionHandler = new TransactionHandler(transactions);
         banks = new BankReaderDao().getBanks();
@@ -73,7 +69,7 @@ public class AddATransactionController {
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
-        initializeStateComboBox("");
+        initializeLocationComboBox(transactions);
         initializeIsPendingComboBox();
         initializeDatePicker();
         initializePrimaryBankComboBox();
@@ -95,36 +91,31 @@ public class AddATransactionController {
     }
 
     @FXML
+    private void nameComboBoxOnAction() {
+        nameFilterButton.setDisable(false);
+    }
+
+    @FXML
     private void typeFilterButtonOnAction() {
-        List<TransactionObject> filteredTransactions = transactionHandler.getTransactions(selectedType);
+        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByType(selectedType);
         initializeNameComboBox(filteredTransactions);
     }
 
     @FXML
-    private void stateComboBoxOnAction() {
-        String comboBoxValue = stateComboBox.getValue();
-        selectedStateName = stateHandler.isValidStateName(comboBoxValue) ?
-                stateHandler.getStateUsingStateName(comboBoxValue).stateName() : null;
-        if (selectedStateName == null) {
-            initializeStateComboBox(comboBoxValue);
+    private void locationComboBoxOnAction() {
+        selectedLocation = new LocationObject(locationComboBox.getValue());
+        if (selectedLocation.isValid()) {
+            locationComboBox.setValue(selectedLocation.toString());
         } else {
-            stateComboBox.setValue(selectedStateName);
-            cityComboBox.setDisable(false);
-            initializeCityComboBox(stateHandler.getStateUsingStateName(selectedStateName).stateCode(), "");
+            locationComboBox.setValue("");
         }
     }
 
     @FXML
-    private void cityComboBoxOnAction() {
-        String comboBoxValue = cityComboBox.getValue();
-        UsaCityHandler cityHandler = new UsaCityHandler(stateHandler.getStateUsingStateName(selectedStateName).stateCode());
-        selectedCityName = cityHandler.getCityName(comboBoxValue);
-        if (selectedCityName == null) {
-            initializeCityComboBox(stateHandler.getStateUsingStateName(selectedStateName).stateCode(), comboBoxValue);
-        } else {
-            cityComboBox.setValue(selectedCityName);
-            stateComboBox.setDisable(true);
-        }
+    private void nameFilterButtonOnAction() {
+        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByName(
+                nameComboBox.getValue());
+        initializeLocationComboBox(filteredTransactions);
     }
 
     @FXML
@@ -163,13 +154,8 @@ public class AddATransactionController {
             confirmButton.setVisible(false);
             return;
         }
-        if (selectedStateName == null) {
-            finalFeedbackText.setText("Select valid state");
-            confirmButton.setVisible(false);
-            return;
-        }
-        if (selectedCityName == null) {
-            finalFeedbackText.setText("Select valid city");
+        if (selectedLocation == null || !selectedLocation.isValid()) {
+            finalFeedbackText.setText("Enter the location");
             confirmButton.setVisible(false);
             return;
         }
@@ -195,17 +181,19 @@ public class AddATransactionController {
         amountTextField.setDisable(true);
         noteComboBox.setDisable(true);
         nameComboBox.setDisable(true);
-        cityComboBox.setDisable(true);
+        locationComboBox.setDisable(true);
         primaryBankComboBox.setDisable(true);
         secondaryBankComboBox.setDisable(true);
         isPendingComboBox.setDisable(true);
+        typeFilterButton.setDisable(true);
+        nameFilterButton.setDisable(true);
         // Add transaction to the database
         TransactionObject newTransaction = new TransactionObject(Integer.parseInt(idTextField.getText()), null,
                 typeComboBox.getValue(), DateHandler.getJavaUtilDate(datePicker.getValue().toString()),
                 new AmountObject(new BigDecimal(amountTextField.getText())), noteComboBox.getValue(),
-                nameComboBox.getValue(), new LocationObject(cityComboBox.getValue(),
-                stateHandler.getStateUsingStateName(stateComboBox.getValue())), primaryBankComboBox.getValue(),
-                secondaryBankComboBox.getValue(), BooleanHandler.getBooleanValueFromString(isPendingComboBox.getValue()));
+                nameComboBox.getValue(), new LocationObject(locationComboBox.getValue()),
+                primaryBankComboBox.getValue(), secondaryBankComboBox.getValue(),
+                BooleanHandler.getBooleanValueFromString(isPendingComboBox.getValue()));
         new TransactionWriterDao().addATransactionToDatabase(newTransaction);
         // Feedback
         finalFeedbackText.setText("Transaction added successfully");
@@ -222,16 +210,12 @@ public class AddATransactionController {
         typeComboBox.setItems(typeObservableList);
     }
 
-    private void initializeStateComboBox(String stateNameSearch) {
-        ObservableList<String> stateObservableList = FXCollections.observableArrayList();
-        stateObservableList.addAll(stateHandler.getStateNames(stateNameSearch));
-        stateComboBox.setItems(stateObservableList);
-    }
-
-    private void initializeCityComboBox(String stateCode, String cityNameSearch) {
-        ObservableList<String> cityObservableList = FXCollections.observableArrayList();
-        cityObservableList.addAll(new UsaCityHandler(stateCode).getCityNames(cityNameSearch));
-        cityComboBox.setItems(cityObservableList);
+    private void initializeLocationComboBox(List<TransactionObject> transactions) {
+        ObservableList<String> locationObservableList = FXCollections.observableArrayList();
+        List<String> locations = LocationHandler.getLocationStringList(transactions);
+        Collections.reverse(locations);
+        locationObservableList.addAll(locations);
+        locationComboBox.setItems(locationObservableList);
     }
 
     private void initializePrimaryBankComboBox() {
@@ -258,7 +242,7 @@ public class AddATransactionController {
 
     private void initializeNoteComboBox() {
         ObservableList<String> stringObservableList = FXCollections.observableArrayList();
-        List<TransactionObject> filteredTransactions = transactionHandler.getTransactions(selectedType);
+        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByType(selectedType);
         List<String> notes = NoteHandler.getNoteStringList(filteredTransactions);
         Collections.reverse(notes);
         stringObservableList.addAll(notes);
