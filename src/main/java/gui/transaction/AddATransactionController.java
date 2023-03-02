@@ -258,6 +258,12 @@ public class AddATransactionController {
     }
 
     private void initializeDatePicker() {
-        datePicker.setValue(LocalDate.parse(DateHandler.getDateString(new Date())));
+        Date defaultDate;
+        if (transactions.size() > 0) {
+            defaultDate = transactions.get(transactions.size() - 1).getDate();
+        } else {
+            defaultDate = new Date();
+        }
+        datePicker.setValue(LocalDate.parse(DateHandler.getDateString(defaultDate)));
     }
 }
