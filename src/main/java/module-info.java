@@ -11,4 +11,6 @@ module application {
     exports gui.menu;
     opens gui.transaction to javafx.fxml;
     exports gui.transaction;
+    opens gui.report to javafx.fxml;
+    exports gui.report;
 }

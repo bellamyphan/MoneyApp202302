@@ -16,6 +16,7 @@ public class SystemConfiguration {
     public static final String reportMenuViewPath = "/gui/menu/report-menu-view.fxml";
     public static final String addATransactionViewPath = "/gui/transaction/add-a-transaction-view.fxml";
     public static final String addABankViewPath = "/gui/bank/add-a-bank-view.fxml";
+    public static final String typeReportViewPath = "/gui/report/type-report-view.fxml";
 
     // Data paths
     public static final String bankDataPath = "data/banks.csv";
