@@ -20,7 +20,7 @@ public class TransactionHandler {
     }
 
     public List<TransactionObject> getTransactionsFilterByType(Type type) {
-        ArrayList<TransactionObject> transactionList = new ArrayList<>();
+        List<TransactionObject> transactionList = new ArrayList<>();
         for (TransactionObject transaction : transactions) {
             if (transaction.getType() == type) {
                 transactionList.add(transaction);
@@ -30,7 +30,7 @@ public class TransactionHandler {
     }
 
     public List<TransactionObject> getTransactionsFilterByName(String name) {
-        ArrayList<TransactionObject> transactionList = new ArrayList<>();
+        List<TransactionObject> transactionList = new ArrayList<>();
         for (TransactionObject transaction : transactions) {
             if (transaction.getName().compareToIgnoreCase(name) == 0) {
                 transactionList.add(transaction);
@@ -38,4 +38,14 @@ public class TransactionHandler {
         }
         return transactionList;
     }
+
+//    public List<TransactionObject> getTransactionsFilterByTime(Date startDate, Date endDate) {
+//        List<TransactionObject> transactionList = new ArrayList<>();
+//        for (TransactionObject transaction : transactions) {
+//            if (startDate.compareTo(transaction.getDate()) <= 0 && transaction.getDate().compareTo(endDate) <= 0) {
+//                transactionList.add(transaction);
+//            }
+//        }
+//        return transactionList;
+//    }
 }
