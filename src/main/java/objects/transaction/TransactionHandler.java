@@ -3,6 +3,7 @@ package objects.transaction;
 import objects.type.Type;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TransactionHandler {
@@ -39,13 +40,13 @@ public class TransactionHandler {
         return transactionList;
     }
 
-//    public List<TransactionObject> getTransactionsFilterByTime(Date startDate, Date endDate) {
-//        List<TransactionObject> transactionList = new ArrayList<>();
-//        for (TransactionObject transaction : transactions) {
-//            if (startDate.compareTo(transaction.getDate()) <= 0 && transaction.getDate().compareTo(endDate) <= 0) {
-//                transactionList.add(transaction);
-//            }
-//        }
-//        return transactionList;
-//    }
+    public List<TransactionObject> getTransactionsFilterByTime(Date startDate, Date endDate) {
+        List<TransactionObject> transactionList = new ArrayList<>();
+        for (TransactionObject transaction : transactions) {
+            if (startDate.compareTo(transaction.getDate()) <= 0 && transaction.getDate().compareTo(endDate) <= 0) {
+                transactionList.add(transaction);
+            }
+        }
+        return transactionList;
+    }
 }

@@ -19,6 +19,15 @@ public class ReportList {
         }
     }
 
+    public List<ReportObject> getReportList() {
+        List<ReportObject> newList = new ArrayList<>();
+        for (ReportObject reportObject : reportList) {
+            if (reportObject.getAmountObject().getAmount().compareTo(new BigDecimal("0")) != 0) {
+                newList.add(reportObject);
+            }
+        }
+        return newList;
+    }
     public void update(TransactionObject transaction) {
         Objects.requireNonNull(getReportObject(transaction.getType())).update(transaction.getAmount());
     }
@@ -44,7 +53,7 @@ public class ReportList {
         return null;
     }
 
-    private AmountObject getOverallBalance() {
+    public AmountObject getOverallBalance() {
         AmountObject overallBalance = new AmountObject(new BigDecimal("0"));
         for (ReportObject report : reportList) {
             overallBalance.add(report.getAmountObject());
