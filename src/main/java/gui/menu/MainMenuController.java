@@ -19,7 +19,8 @@ public class MainMenuController {
     }
 
     @FXML
-    private void reportMenuOnAction() {
+    private void reportMenuOnAction(ActionEvent actionEvent) throws IOException {
+        StageHandler.goToView(actionEvent, SystemConfiguration.reportMenuViewPath);
     }
 
     @FXML

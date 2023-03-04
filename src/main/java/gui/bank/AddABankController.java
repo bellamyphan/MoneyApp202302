@@ -90,9 +90,10 @@ public class AddABankController {
         confirmButton.setDisable(true);
         // Add the bank to the database
         BankObject bankObject = new BankObject(bankNameTextField.getText(), websiteTextField.getText(),
-                accountNameTextField.getText(), DateHandler.getJavaUtilDate(openDatePicker.getValue().toString()),
+                accountNameTextField.getText(), DateHandler.getJavaUtilDateFromString(
+                        openDatePicker.getValue().toString()),
                 closeDatePicker.getValue() != null ?
-                        DateHandler.getJavaUtilDate(closeDatePicker.getValue().toString()) : null,
+                        DateHandler.getJavaUtilDateFromString(closeDatePicker.getValue().toString()) : null,
                 accountTypeComboBox.getValue(),
                 new BigDecimal(StringHandler.getNumberString(interestRateTextField.getText())));
         new BankWriterDao().addABankToDatabase(bankObject);

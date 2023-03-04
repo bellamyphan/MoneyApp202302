@@ -15,4 +15,8 @@ public class CharacterHandler {
     public boolean isDot() {
         return aChar == 46;
     }
+
+    public boolean isNegativeSign() {
+        return aChar == 45;
+    }
 }

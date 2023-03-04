@@ -189,7 +189,8 @@ public class AddATransactionController {
         nameFilterButton.setDisable(true);
         // Add transaction to the database
         TransactionObject newTransaction = new TransactionObject(Integer.parseInt(idTextField.getText()), null,
-                typeComboBox.getValue(), DateHandler.getJavaUtilDate(datePicker.getValue().toString()),
+                typeComboBox.getValue(), DateHandler.getJavaUtilDateFromString(
+                        datePicker.getValue().toString()),
                 new AmountObject(new BigDecimal(amountTextField.getText())), noteComboBox.getValue(),
                 nameComboBox.getValue(), new LocationObject(locationComboBox.getValue()),
                 primaryBankComboBox.getValue(), secondaryBankComboBox.getValue(),
