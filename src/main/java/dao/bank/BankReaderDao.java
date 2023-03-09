@@ -48,9 +48,9 @@ public class BankReaderDao {
         String bankName = DoubleQuoteHandler.removeDoubleQuote(bankLine[0]);
         String website = DoubleQuoteHandler.removeDoubleQuote(bankLine[1]);
         String accountName = DoubleQuoteHandler.removeDoubleQuote(bankLine[2]);
-        Date openDate = DateHandler.getJavaUtilDateFromYearMonthDayString(
+        Date openDate = DateHandler.getJavaUtilDateFromString(
                 DoubleQuoteHandler.removeDoubleQuote(bankLine[3]));
-        Date closeDate = DateHandler.getJavaUtilDateFromYearMonthDayString(
+        Date closeDate = DateHandler.getJavaUtilDateFromString(
                 DoubleQuoteHandler.removeDoubleQuote(bankLine[4]));
         BankType accountType = BankType.valueOf(DoubleQuoteHandler.removeDoubleQuote(bankLine[5]));
         BigDecimal interestRate = new BigDecimal(DoubleQuoteHandler.removeDoubleQuote(bankLine[6]));
