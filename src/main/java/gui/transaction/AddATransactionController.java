@@ -38,7 +38,7 @@ import java.util.List;
 
 public class AddATransactionController {
     @FXML
-    private Button confirmButton, typeFilterButton, nameFilterButton;
+    private Button reviewButton, confirmButton, typeFilterButton, nameFilterButton;
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
@@ -187,6 +187,9 @@ public class AddATransactionController {
         isPendingComboBox.setDisable(true);
         typeFilterButton.setDisable(true);
         nameFilterButton.setDisable(true);
+        reviewButton.setDisable(true);
+        confirmButton.setDisable(true);
+
         // Add transaction to the database
         TransactionObject newTransaction = new TransactionObject(Integer.parseInt(idTextField.getText()), null,
                 typeComboBox.getValue(), DateHandler.getJavaUtilDateFromString(
