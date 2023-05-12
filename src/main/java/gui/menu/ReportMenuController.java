@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ReportMenuController {
     @FXML
-    private Button inputYearButton, startMonthEndMonthButton, confirmButton;
+    private Button inputYearButton, startMonthEndMonthButton, confirmButton, quickButton1, quickButton2, quickButton3;
     @FXML
     private Label startDateLabel;
     @FXML
@@ -31,8 +31,12 @@ public class ReportMenuController {
     private final TransactionHandler transactionHandler;
 
     public ReportMenuController() {
-        List<TransactionObject> transactions = new TransactionReaderDao().getTransactions();
-        transactionHandler = new TransactionHandler(transactions);
+        transactionHandler = new TransactionHandler(new TransactionReaderDao().getTransactions());
+    }
+
+    @FXML
+    private void initialize() {
+        loadQuickButtons();
     }
 
     @FXML
@@ -77,5 +81,19 @@ public class ReportMenuController {
     @FXML
     private void exitThisMenuOnAction(ActionEvent actionEvent) throws IOException {
         StageHandler.goToView(actionEvent, SystemConfiguration.mainMenuViewPath);
+    }
+
+    private void loadQuickButtons() {
+        // Get current month
+        TransactionObject latestTransaction = transactionHandler.getLatestTransactionExcludingFutureTransactions();
+        Date minusZeroMonthDate = latestTransaction.getDate();
+        // Get previous month
+        Date minusOneMonthDate = DateHandler.getMinusOneMonth(DateHandler.getYearMonthString(minusZeroMonthDate));
+        // Get previous previous month
+        Date minusTwoMonthDate = DateHandler.getMinusOneMonth(DateHandler.getYearMonthString(minusOneMonthDate));
+        // Set up quick buttons' names
+        quickButton1.setText(DateHandler.getYearMonthString(minusZeroMonthDate));
+        quickButton2.setText(DateHandler.getYearMonthString(minusOneMonthDate));
+        quickButton3.setText(DateHandler.getYearMonthString(minusTwoMonthDate));
     }
 }
