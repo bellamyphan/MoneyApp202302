@@ -39,9 +39,9 @@
         </VBox>
 
         <VBox alignment="CENTER" spacing="20">
-            <Button fx:id="quickButton1"></Button>
-            <Button fx:id="quickButton2"></Button>
-            <Button fx:id="quickButton3"></Button>
+            <Button fx:id="quickButton1" onAction="#quickButton1OnAction"/>
+            <Button fx:id="quickButton2" onAction="#quickButton2OnAction"/>
+            <Button fx:id="quickButton3" onAction="#quickButton3OnAction"/>
         </VBox>
     </HBox>
 
