@@ -20,6 +20,12 @@ public class TransactionHandler {
             return transactions.get(transactions.size() - 1).getId() + 1;
     }
 
+    public TransactionObject getLatestTransactionExcludingFutureTransactions() {
+        List<TransactionObject> transactionList = getTransactionsFilterByEndTime(new Date());
+        int size = transactionList.size();
+        return transactionList.get(size - 1);
+    }
+
     public List<TransactionObject> getTransactionsFilterByType(Type type) {
         List<TransactionObject> transactionList = new ArrayList<>();
         for (TransactionObject transaction : transactions) {
@@ -44,6 +50,16 @@ public class TransactionHandler {
         List<TransactionObject> transactionList = new ArrayList<>();
         for (TransactionObject transaction : transactions) {
             if (startDate.compareTo(transaction.getDate()) <= 0 && transaction.getDate().compareTo(endDate) <= 0) {
+                transactionList.add(transaction);
+            }
+        }
+        return transactionList;
+    }
+
+    private List<TransactionObject> getTransactionsFilterByEndTime(Date endDate) {
+        List<TransactionObject> transactionList = new ArrayList<>();
+        for (TransactionObject transaction : transactions) {
+            if (transaction.getDate().compareTo(endDate) <= 0) {
                 transactionList.add(transaction);
             }
         }

@@ -47,6 +47,14 @@ public class DateHandler {
         }
     }
 
+    public static String getYearMonthString(Date date) {
+        if (date != null) {
+            return getDateString(date).substring(0, 7);
+        } else {
+            return "";
+        }
+    }
+
     public static String getYear(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -74,6 +82,33 @@ public class DateHandler {
         calendar.setTime(inputDate);
         int maxDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         String newDateString = getDateString(inputDate).substring(0, 8) + maxDay;
+        return getJavaUtilDateFromString(newDateString);
+    }
+
+    public static Date getMinusOneMonth(String yearMonthString) {
+        // Get java util Date
+        String dateString = yearMonthString + "-01";
+        Date date = getJavaUtilDateFromString(dateString);
+        // Set up Calendar
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int year = calendar.get(Calendar.YEAR);
+        // Minus one month
+        month--;
+        if (month == 0) {
+            month = 12;
+            year--;
+        }
+        // Create new date string after minus one month
+        String monthString;
+        if (month < 10) {
+            monthString = "0" + month;
+        } else {
+            monthString = String.valueOf(month);
+        }
+        String newDateString = year + "-" + monthString + "-" + "01";
+        // Return
         return getJavaUtilDateFromString(newDateString);
     }
 
