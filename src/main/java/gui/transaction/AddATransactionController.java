@@ -255,6 +255,7 @@ public class AddATransactionController {
         ObservableList<String> stringObservableList = FXCollections.observableArrayList();
         stringObservableList.addAll("Yes", "No");
         isPendingComboBox.setItems(stringObservableList);
+        isPendingComboBox.setValue("No");
     }
 
     private void initializeNoteComboBox() {
