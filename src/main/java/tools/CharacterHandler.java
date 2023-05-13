@@ -1,22 +1,15 @@
 package tools;
 
 public class CharacterHandler {
-
-    private final char aChar;
-
-    public CharacterHandler(char aChar) {
-        this.aChar = aChar;
-    }
-
-    public boolean isDigit() {
+    public static boolean isDigit(char aChar) {
         return 48 <= aChar && aChar <= 57;
     }
 
-    public boolean isDot() {
+    public static boolean isDot(char aChar) {
         return aChar == 46;
     }
 
-    public boolean isNegativeSign() {
+    public static boolean isNegativeSign(char aChar) {
         return aChar == 45;
     }
 }

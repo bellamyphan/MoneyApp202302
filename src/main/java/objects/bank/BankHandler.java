@@ -10,6 +10,10 @@ public class BankHandler {
         this.banks = banks;
     }
 
+    public List<BankObject> getBanks() {
+        return this.banks;
+    }
+
     public List<BankObject> getBanksExclude(BankObject bankObject) {
         List<BankObject> resultList = new ArrayList<>();
         for (BankObject bank : banks) {

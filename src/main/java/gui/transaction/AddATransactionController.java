@@ -25,9 +25,7 @@ import objects.transaction.TransactionObject;
 import objects.type.Type;
 import objects.type.TypeDescription;
 import objects.type.TypeHandler;
-import tools.BooleanHandler;
-import tools.DateHandler;
-import tools.StageHandler;
+import tools.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -38,7 +36,7 @@ import java.util.List;
 
 public class AddATransactionController {
     @FXML
-    private Button reviewButton, confirmButton, typeFilterButton, nameFilterButton;
+    private Button reviewButton, confirmButton, listAllNamesButton, listAllLocationsButton;
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
@@ -50,55 +48,85 @@ public class AddATransactionController {
     @FXML
     private TextField idTextField, amountTextField;
     @FXML
-    private Text finalFeedbackText, bankFeedbackText, typeFeedbackText;
-
-    private final List<TransactionObject> transactions;
-    private final List<BankObject> banks;
+    private Text finalFeedbackText, bankFeedbackText, typeFeedbackText, amountFeedbackText;
     private final BankHandler bankHandler;
     private final TransactionHandler transactionHandler;
     private Type selectedType;
     private LocationObject selectedLocation;
 
     public AddATransactionController() {
-        transactions = new TransactionReaderDao().getTransactions();
-        transactionHandler = new TransactionHandler(transactions);
-        banks = new BankReaderDao().getBanks();
-        bankHandler = new BankHandler(banks);
+        transactionHandler = new TransactionHandler(new TransactionReaderDao().getTransactions());
+        bankHandler = new BankHandler(new BankReaderDao().getBanks());
     }
 
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
-        initializeLocationComboBox(transactions);
         initializeIsPendingComboBox();
         initializeDatePicker();
         initializePrimaryBankComboBox();
-        initializeNameComboBox(transactions);
         DateHandler.formatDatePicker(datePicker);
     }
 
     @FXML
     private void typeComboBoxOnAction() {
+        // Test if selective type is valid, else return null
         selectedType = new TypeHandler().getType(String.valueOf(typeComboBox.getValue()));
+        // Type is null, need to select again
         if (selectedType == null) {
             initializeTypeComboBox(String.valueOf(typeComboBox.getValue()));
-        } else {
+        }
+        // Valid type selected
+        else {
+            // Feedback to type combo box
             typeComboBox.setValue(selectedType);
             typeFeedbackText.setText(new TypeDescription(selectedType).getDescription());
+            // Initialize note combo box
             initializeNoteComboBox();
-            typeFilterButton.setDisable(false);
+            // Initialize name combo box
+            listAllNamesButton.setDisable(false);
+            List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByType(selectedType);
+            initializeNameComboBox(filteredTransactions);
+        }
+    }
+
+    @FXML
+    private void amountTextFieldOnKeyTyped() {
+        // Check valid amount, only contain digits, dot, negative sign
+        if (!StringHandler.containsDigitDotNegativeSign(amountTextField.getText())) {
+            amountFeedbackText.setText("In valid input - Only accept digits, dot and negative sign");
+        } else {
+            if (selectedType != null && amountTextField.getText().length() > 0) {
+                // Check if the amount should be positive
+                if (selectedType == Type.INCOME_EARN || selectedType == Type.INCOME_PASSIVE
+                        || selectedType == Type.INCOME_PORTFOLIO) {
+                    if (CharacterHandler.isNegativeSign(amountTextField.getText().charAt(0))) {
+                        amountFeedbackText.setText("Type " + selectedType.toString() + " should be POSITIVE");
+                    }
+                }
+                // Check if the amount should be negative
+                else {
+                    if (!CharacterHandler.isNegativeSign(amountTextField.getText().charAt(0))) {
+                        amountFeedbackText.setText("Type " + selectedType.toString() + " should be NEGATIVE");
+                    }
+                }
+            } else {
+                amountFeedbackText.setText("");
+            }
         }
     }
 
     @FXML
     private void nameComboBoxOnAction() {
-        nameFilterButton.setDisable(false);
+        listAllLocationsButton.setDisable(false);
+        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByName(
+                nameComboBox.getValue());
+        initializeLocationComboBox(filteredTransactions);
     }
 
     @FXML
-    private void typeFilterButtonOnAction() {
-        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByType(selectedType);
-        initializeNameComboBox(filteredTransactions);
+    private void listAllNamesButtonOnAction() {
+        initializeNameComboBox(transactionHandler.getTransactions());
     }
 
     @FXML
@@ -112,10 +140,8 @@ public class AddATransactionController {
     }
 
     @FXML
-    private void nameFilterButtonOnAction() {
-        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByName(
-                nameComboBox.getValue());
-        initializeLocationComboBox(filteredTransactions);
+    private void listAllLocationsButtonOnAction() {
+        initializeLocationComboBox(transactionHandler.getTransactions());
     }
 
     @FXML
@@ -185,8 +211,8 @@ public class AddATransactionController {
         primaryBankComboBox.setDisable(true);
         secondaryBankComboBox.setDisable(true);
         isPendingComboBox.setDisable(true);
-        typeFilterButton.setDisable(true);
-        nameFilterButton.setDisable(true);
+        listAllNamesButton.setDisable(true);
+        listAllLocationsButton.setDisable(true);
         reviewButton.setDisable(true);
         confirmButton.setDisable(true);
 
@@ -223,9 +249,9 @@ public class AddATransactionController {
     }
 
     private void initializePrimaryBankComboBox() {
-        if (banks != null && banks.size() > 0) {
+        if (bankHandler.getBanks() != null && bankHandler.getBanks().size() > 0) {
             ObservableList<BankObject> bankObservableList = FXCollections.observableArrayList();
-            bankObservableList.addAll(banks);
+            bankObservableList.addAll(bankHandler.getBanks());
             primaryBankComboBox.setItems(bankObservableList);
         } else {
             bankFeedbackText.setText("No banks on record");
@@ -242,6 +268,7 @@ public class AddATransactionController {
         ObservableList<String> stringObservableList = FXCollections.observableArrayList();
         stringObservableList.addAll("Yes", "No");
         isPendingComboBox.setItems(stringObservableList);
+        isPendingComboBox.setValue("No");
     }
 
     private void initializeNoteComboBox() {
@@ -263,8 +290,9 @@ public class AddATransactionController {
 
     private void initializeDatePicker() {
         Date defaultDate;
-        if (transactions.size() > 0) {
-            defaultDate = transactions.get(transactions.size() - 1).getDate();
+        if (transactionHandler.getTransactions().size() > 0) {
+            defaultDate = transactionHandler.getTransactions()
+                    .get(transactionHandler.getTransactions().size() - 1).getDate();
         } else {
             defaultDate = new Date();
         }

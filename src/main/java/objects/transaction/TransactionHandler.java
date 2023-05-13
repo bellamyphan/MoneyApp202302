@@ -20,6 +20,10 @@ public class TransactionHandler {
             return transactions.get(transactions.size() - 1).getId() + 1;
     }
 
+    public List<TransactionObject> getTransactions() {
+        return this.transactions;
+    }
+
     public TransactionObject getLatestTransactionExcludingFutureTransactions() {
         List<TransactionObject> transactionList = getTransactionsFilterByEndTime(new Date());
         int size = transactionList.size();
