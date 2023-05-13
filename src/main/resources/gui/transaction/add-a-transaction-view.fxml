@@ -23,7 +23,9 @@
     <DatePicker GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="datePicker" promptText="yyyy-mm-dd"/>
 
     <Text GridPane.rowIndex="3" GridPane.columnIndex="0" text="Amount"/>
-    <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="amountTextField" promptText="Enter USD amount"/>
+    <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="amountTextField" promptText="Enter USD amount"
+               onKeyTyped="#amountTextFieldOnKeyTyped"/>
+    <Text GridPane.rowIndex="3" GridPane.columnIndex="2" fx:id="amountFeedbackText"/>
 
     <Text GridPane.rowIndex="4" GridPane.columnIndex="0" text="Note"/>
     <ComboBox GridPane.rowIndex="4" GridPane.columnIndex="1" fx:id="noteComboBox"

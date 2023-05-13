@@ -28,6 +28,7 @@ import objects.type.TypeHandler;
 import tools.BooleanHandler;
 import tools.DateHandler;
 import tools.StageHandler;
+import tools.StringHandler;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -50,7 +51,7 @@ public class AddATransactionController {
     @FXML
     private TextField idTextField, amountTextField;
     @FXML
-    private Text finalFeedbackText, bankFeedbackText, typeFeedbackText;
+    private Text finalFeedbackText, bankFeedbackText, typeFeedbackText, amountFeedbackText;
     private final BankHandler bankHandler;
     private final TransactionHandler transactionHandler;
     private Type selectedType;
@@ -82,6 +83,16 @@ public class AddATransactionController {
             typeFeedbackText.setText(new TypeDescription(selectedType).getDescription());
             initializeNoteComboBox();
             typeFilterButton.setDisable(false);
+        }
+    }
+
+    @FXML
+    private void amountTextFieldOnKeyTyped() {
+        // Check valid amount, only contain digits, dot, negative sign
+        if (!StringHandler.containsDigitDotNegativeSign(amountTextField.getText())) {
+            amountFeedbackText.setText("In valid input - Only accept digits, dot and negative sign");
+        } else {
+            amountFeedbackText.setText("");
         }
     }
 

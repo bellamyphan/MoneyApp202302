@@ -13,6 +13,6 @@ public class DevelopmentView extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        StageHandler.goToView(stage, SystemConfiguration.reportMenuViewPath);
+        StageHandler.goToView(stage, SystemConfiguration.addATransactionViewPath);
     }
 }
