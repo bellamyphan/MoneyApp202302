@@ -51,7 +51,6 @@ public class AddATransactionController {
     private TextField idTextField, amountTextField;
     @FXML
     private Text finalFeedbackText, bankFeedbackText, typeFeedbackText;
-    private final List<BankObject> banks;
     private final BankHandler bankHandler;
     private final TransactionHandler transactionHandler;
     private Type selectedType;
@@ -59,8 +58,7 @@ public class AddATransactionController {
 
     public AddATransactionController() {
         transactionHandler = new TransactionHandler(new TransactionReaderDao().getTransactions());
-        banks = new BankReaderDao().getBanks();
-        bankHandler = new BankHandler(banks);
+        bankHandler = new BankHandler(new BankReaderDao().getBanks());
     }
 
     @FXML
@@ -220,9 +218,9 @@ public class AddATransactionController {
     }
 
     private void initializePrimaryBankComboBox() {
-        if (banks != null && banks.size() > 0) {
+        if (bankHandler.getBanks() != null && bankHandler.getBanks().size() > 0) {
             ObservableList<BankObject> bankObservableList = FXCollections.observableArrayList();
-            bankObservableList.addAll(banks);
+            bankObservableList.addAll(bankHandler.getBanks());
             primaryBankComboBox.setItems(bankObservableList);
         } else {
             bankFeedbackText.setText("No banks on record");
