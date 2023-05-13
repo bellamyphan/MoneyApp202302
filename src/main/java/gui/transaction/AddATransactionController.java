@@ -51,8 +51,6 @@ public class AddATransactionController {
     private TextField idTextField, amountTextField;
     @FXML
     private Text finalFeedbackText, bankFeedbackText, typeFeedbackText;
-
-    private final List<TransactionObject> transactions;
     private final List<BankObject> banks;
     private final BankHandler bankHandler;
     private final TransactionHandler transactionHandler;
@@ -60,8 +58,7 @@ public class AddATransactionController {
     private LocationObject selectedLocation;
 
     public AddATransactionController() {
-        transactions = new TransactionReaderDao().getTransactions();
-        transactionHandler = new TransactionHandler(transactions);
+        transactionHandler = new TransactionHandler(new TransactionReaderDao().getTransactions());
         banks = new BankReaderDao().getBanks();
         bankHandler = new BankHandler(banks);
     }
@@ -69,11 +66,11 @@ public class AddATransactionController {
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
-        initializeLocationComboBox(transactions);
+        initializeLocationComboBox(transactionHandler.getTransactions());
         initializeIsPendingComboBox();
         initializeDatePicker();
         initializePrimaryBankComboBox();
-        initializeNameComboBox(transactions);
+        initializeNameComboBox(transactionHandler.getTransactions());
         DateHandler.formatDatePicker(datePicker);
     }
 
@@ -263,8 +260,9 @@ public class AddATransactionController {
 
     private void initializeDatePicker() {
         Date defaultDate;
-        if (transactions.size() > 0) {
-            defaultDate = transactions.get(transactions.size() - 1).getDate();
+        if (transactionHandler.getTransactions().size() > 0) {
+            defaultDate = transactionHandler.getTransactions()
+                    .get(transactionHandler.getTransactions().size() - 1).getDate();
         } else {
             defaultDate = new Date();
         }
