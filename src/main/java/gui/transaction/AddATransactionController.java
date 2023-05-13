@@ -39,7 +39,7 @@ import java.util.List;
 
 public class AddATransactionController {
     @FXML
-    private Button reviewButton, confirmButton, typeFilterButton, nameFilterButton;
+    private Button reviewButton, confirmButton, listAllNamesButton, nameFilterButton;
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
@@ -69,20 +69,28 @@ public class AddATransactionController {
         initializeIsPendingComboBox();
         initializeDatePicker();
         initializePrimaryBankComboBox();
-        initializeNameComboBox(transactionHandler.getTransactions());
         DateHandler.formatDatePicker(datePicker);
     }
 
     @FXML
     private void typeComboBoxOnAction() {
+        // Test if selective type is valid, else return null
         selectedType = new TypeHandler().getType(String.valueOf(typeComboBox.getValue()));
+        // Type is null, need to select again
         if (selectedType == null) {
             initializeTypeComboBox(String.valueOf(typeComboBox.getValue()));
-        } else {
+        }
+        // Valid type selected
+        else {
+            // Feedback to type combo box
             typeComboBox.setValue(selectedType);
             typeFeedbackText.setText(new TypeDescription(selectedType).getDescription());
+            // Initialize note combo box
             initializeNoteComboBox();
-            typeFilterButton.setDisable(false);
+            // Initialize name combo box
+            listAllNamesButton.setDisable(false);
+            List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByType(selectedType);
+            initializeNameComboBox(filteredTransactions);
         }
     }
 
@@ -102,9 +110,8 @@ public class AddATransactionController {
     }
 
     @FXML
-    private void typeFilterButtonOnAction() {
-        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByType(selectedType);
-        initializeNameComboBox(filteredTransactions);
+    private void listAllNamesButtonOnAction() {
+        initializeNameComboBox(transactionHandler.getTransactions());
     }
 
     @FXML
@@ -191,7 +198,7 @@ public class AddATransactionController {
         primaryBankComboBox.setDisable(true);
         secondaryBankComboBox.setDisable(true);
         isPendingComboBox.setDisable(true);
-        typeFilterButton.setDisable(true);
+        listAllNamesButton.setDisable(true);
         nameFilterButton.setDisable(true);
         reviewButton.setDisable(true);
         confirmButton.setDisable(true);

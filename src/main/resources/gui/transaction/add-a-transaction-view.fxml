@@ -34,8 +34,8 @@
     <Text GridPane.rowIndex="5" GridPane.columnIndex="0" text="Name"/>
     <ComboBox GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="nameComboBox" promptText="Enter name here"
               editable="true" onAction="#nameComboBoxOnAction"/>
-    <Button GridPane.rowIndex="5" GridPane.columnIndex="2" fx:id="typeFilterButton" text="Filter by Type" disable="true"
-            onAction="#typeFilterButtonOnAction"/>
+    <Button GridPane.rowIndex="5" GridPane.columnIndex="2" fx:id="listAllNamesButton" text="List all Names"
+            disable="true" onAction="#listAllNamesButtonOnAction"/>
 
     <Text GridPane.rowIndex="6" GridPane.columnIndex="0" text="Location"/>
     <ComboBox GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="locationComboBox" promptText="City StateCode"
