@@ -39,7 +39,7 @@ import java.util.List;
 
 public class AddATransactionController {
     @FXML
-    private Button reviewButton, confirmButton, listAllNamesButton, nameFilterButton;
+    private Button reviewButton, confirmButton, listAllNamesButton, listAllLocationsButton;
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
@@ -65,7 +65,6 @@ public class AddATransactionController {
     @FXML
     private void initialize() {
         initializeTypeComboBox("");
-        initializeLocationComboBox(transactionHandler.getTransactions());
         initializeIsPendingComboBox();
         initializeDatePicker();
         initializePrimaryBankComboBox();
@@ -106,7 +105,10 @@ public class AddATransactionController {
 
     @FXML
     private void nameComboBoxOnAction() {
-        nameFilterButton.setDisable(false);
+        listAllLocationsButton.setDisable(false);
+        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByName(
+                nameComboBox.getValue());
+        initializeLocationComboBox(filteredTransactions);
     }
 
     @FXML
@@ -125,10 +127,8 @@ public class AddATransactionController {
     }
 
     @FXML
-    private void nameFilterButtonOnAction() {
-        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByName(
-                nameComboBox.getValue());
-        initializeLocationComboBox(filteredTransactions);
+    private void listAllLocationsButtonOnAction() {
+        initializeLocationComboBox(transactionHandler.getTransactions());
     }
 
     @FXML
@@ -199,7 +199,7 @@ public class AddATransactionController {
         secondaryBankComboBox.setDisable(true);
         isPendingComboBox.setDisable(true);
         listAllNamesButton.setDisable(true);
-        nameFilterButton.setDisable(true);
+        listAllLocationsButton.setDisable(true);
         reviewButton.setDisable(true);
         confirmButton.setDisable(true);
 
