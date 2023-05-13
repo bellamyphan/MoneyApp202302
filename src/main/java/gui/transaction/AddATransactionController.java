@@ -25,10 +25,7 @@ import objects.transaction.TransactionObject;
 import objects.type.Type;
 import objects.type.TypeDescription;
 import objects.type.TypeHandler;
-import tools.BooleanHandler;
-import tools.DateHandler;
-import tools.StageHandler;
-import tools.StringHandler;
+import tools.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -99,7 +96,23 @@ public class AddATransactionController {
         if (!StringHandler.containsDigitDotNegativeSign(amountTextField.getText())) {
             amountFeedbackText.setText("In valid input - Only accept digits, dot and negative sign");
         } else {
-            amountFeedbackText.setText("");
+            if (selectedType != null && amountTextField.getText().length() > 0) {
+                // Check if the amount should be positive
+                if (selectedType == Type.INCOME_EARN || selectedType == Type.INCOME_PASSIVE
+                        || selectedType == Type.INCOME_PORTFOLIO) {
+                    if (CharacterHandler.isNegativeSign(amountTextField.getText().charAt(0))) {
+                        amountFeedbackText.setText("Type " + selectedType.toString() + " should be POSITIVE");
+                    }
+                }
+                // Check if the amount should be negative
+                else {
+                    if (!CharacterHandler.isNegativeSign(amountTextField.getText().charAt(0))) {
+                        amountFeedbackText.setText("Type " + selectedType.toString() + " should be NEGATIVE");
+                    }
+                }
+            } else {
+                amountFeedbackText.setText("");
+            }
         }
     }
 
