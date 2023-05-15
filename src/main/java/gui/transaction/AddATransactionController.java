@@ -36,7 +36,7 @@ import java.util.List;
 
 public class AddATransactionController {
     @FXML
-    private Button reviewButton, confirmButton, listAllNamesButton, listAllLocationsButton;
+    private Button reviewButton, confirmButton, addAnotherTransactionButton, listAllNamesButton, listAllLocationsButton;
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
@@ -48,7 +48,7 @@ public class AddATransactionController {
     @FXML
     private TextField idTextField, amountTextField;
     @FXML
-    private Text finalFeedbackText, bankFeedbackText, typeFeedbackText, amountFeedbackText;
+    private Text lastTransactionText, finalFeedbackText, bankFeedbackText, typeFeedbackText, amountFeedbackText;
     private final BankHandler bankHandler;
     private final TransactionHandler transactionHandler;
     private Type selectedType;
@@ -61,6 +61,7 @@ public class AddATransactionController {
 
     @FXML
     private void initialize() {
+        initializeLastTransactionText();
         initializeTypeComboBox("");
         initializeIsPendingComboBox();
         initializeDatePicker();
@@ -218,7 +219,6 @@ public class AddATransactionController {
         listAllLocationsButton.setDisable(true);
         reviewButton.setDisable(true);
         confirmButton.setDisable(true);
-
         // Add transaction to the database
         TransactionObject newTransaction = new TransactionObject(Integer.parseInt(idTextField.getText()), null,
                 typeComboBox.getValue(), DateHandler.getJavaUtilDateFromString(
@@ -230,11 +230,18 @@ public class AddATransactionController {
         new TransactionWriterDao().addATransactionToDatabase(newTransaction);
         // Feedback
         finalFeedbackText.setText("Transaction added successfully");
+        // User get the option to quickly add another transaction
+        addAnotherTransactionButton.setVisible(true);
     }
 
     @FXML
     private void goBackButtonOnAction(ActionEvent actionEvent) throws IOException {
         StageHandler.goToView(actionEvent, SystemConfiguration.transactionMenuViewPath);
+    }
+
+    @FXML
+    private void addAnotherTransactionButtonOnAction(ActionEvent actionEvent) throws IOException {
+        StageHandler.goToView(actionEvent, SystemConfiguration.addATransactionViewPath);
     }
 
     private void initializeTypeComboBox(String searchType) {
@@ -297,5 +304,13 @@ public class AddATransactionController {
             defaultDate = new Date();
         }
         datePicker.setValue(LocalDate.parse(DateHandler.getDateString(defaultDate)));
+    }
+
+    private void initializeLastTransactionText() {
+        // Get the last transaction
+        TransactionObject lastTransaction = transactionHandler.getTransactions().get(
+                transactionHandler.getTransactions().size() - 1);
+        // Set the lastTransactionText
+        lastTransactionText.setText("Last Transaction: " + lastTransaction.getSimpleString());
     }
 }
