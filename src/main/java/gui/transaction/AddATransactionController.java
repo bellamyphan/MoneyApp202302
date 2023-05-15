@@ -48,7 +48,7 @@ public class AddATransactionController {
     @FXML
     private TextField idTextField, amountTextField;
     @FXML
-    private Text finalFeedbackText, bankFeedbackText, typeFeedbackText, amountFeedbackText;
+    private Text lastTransactionText, finalFeedbackText, bankFeedbackText, typeFeedbackText, amountFeedbackText;
     private final BankHandler bankHandler;
     private final TransactionHandler transactionHandler;
     private Type selectedType;
@@ -61,6 +61,7 @@ public class AddATransactionController {
 
     @FXML
     private void initialize() {
+        initializeLastTransactionText();
         initializeTypeComboBox("");
         initializeIsPendingComboBox();
         initializeDatePicker();
@@ -297,5 +298,13 @@ public class AddATransactionController {
             defaultDate = new Date();
         }
         datePicker.setValue(LocalDate.parse(DateHandler.getDateString(defaultDate)));
+    }
+
+    private void initializeLastTransactionText() {
+        // Get the last transaction
+        TransactionObject lastTransaction = transactionHandler.getTransactions().get(
+                transactionHandler.getTransactions().size() - 1);
+        // Set the lastTransactionText
+        lastTransactionText.setText("Last Transaction: " + lastTransaction.getSimpleString());
     }
 }

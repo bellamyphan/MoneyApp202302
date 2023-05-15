@@ -4,6 +4,7 @@ import objects.amount.AmountObject;
 import objects.bank.BankObject;
 import objects.location.LocationObject;
 import objects.type.Type;
+import tools.DateHandler;
 
 import java.util.Date;
 
@@ -80,13 +81,19 @@ public class TransactionObject {
         return isPending;
     }
 
+    public String getSimpleString() {
+        return "{" + "date=" + DateHandler.getDateString(date) +
+                ", type=" + type +
+                ", amount=" + amount + '}';
+    }
+
     @Override
     public String toString() {
         return "TransactionObject{" +
                 "id=" + id +
                 ", parentId=" + parentId +
                 ", type=" + type +
-                ", date=" + date +
+                ", date=" + DateHandler.getDateString(date) +
                 ", amount=" + amount +
                 ", note='" + note + '\'' +
                 ", name='" + name + '\'' +
