@@ -81,12 +81,15 @@ public class AddATransactionController {
             // Feedback to type combo box
             typeComboBox.setValue(selectedType);
             typeFeedbackText.setText(new TypeDescription(selectedType).getDescription());
+            // Get filter transactions filter by type
+            List<TransactionObject> filteredTypeTransactions = transactionHandler
+                    .getTransactionsFilterByType(selectedType);
+            Collections.reverse(filteredTypeTransactions);
             // Initialize note combo box
-            initializeNoteComboBox();
+            initializeNoteComboBox(filteredTypeTransactions);
             // Initialize name combo box
             listAllNamesButton.setDisable(false);
-            List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByType(selectedType);
-            initializeNameComboBox(filteredTransactions);
+            initializeNameComboBox(filteredTypeTransactions);
         }
     }
 
@@ -271,11 +274,9 @@ public class AddATransactionController {
         isPendingComboBox.setValue("No");
     }
 
-    private void initializeNoteComboBox() {
+    private void initializeNoteComboBox(List<TransactionObject> transactions) {
         ObservableList<String> stringObservableList = FXCollections.observableArrayList();
-        List<TransactionObject> filteredTransactions = transactionHandler.getTransactionsFilterByType(selectedType);
-        List<String> notes = NoteHandler.getNoteStringList(filteredTransactions);
-        Collections.reverse(notes);
+        List<String> notes = NoteHandler.getNoteStringList(transactions);
         stringObservableList.addAll(notes);
         noteComboBox.setItems(stringObservableList);
     }
@@ -283,7 +284,6 @@ public class AddATransactionController {
     private void initializeNameComboBox(List<TransactionObject> transactions) {
         ObservableList<String> stringObservableList = FXCollections.observableArrayList();
         List<String> names = NameHandler.getNameStringList(transactions);
-        Collections.reverse(names);
         stringObservableList.addAll(names);
         nameComboBox.setItems(stringObservableList);
     }
