@@ -36,7 +36,7 @@ import java.util.List;
 
 public class AddATransactionController {
     @FXML
-    private Button reviewButton, confirmButton, listAllNamesButton, listAllLocationsButton;
+    private Button reviewButton, confirmButton, addAnotherTransactionButton, listAllNamesButton, listAllLocationsButton;
     @FXML
     private ComboBox<Type> typeComboBox;
     @FXML
@@ -219,7 +219,6 @@ public class AddATransactionController {
         listAllLocationsButton.setDisable(true);
         reviewButton.setDisable(true);
         confirmButton.setDisable(true);
-
         // Add transaction to the database
         TransactionObject newTransaction = new TransactionObject(Integer.parseInt(idTextField.getText()), null,
                 typeComboBox.getValue(), DateHandler.getJavaUtilDateFromString(
@@ -231,11 +230,18 @@ public class AddATransactionController {
         new TransactionWriterDao().addATransactionToDatabase(newTransaction);
         // Feedback
         finalFeedbackText.setText("Transaction added successfully");
+        // User get the option to quickly add another transaction
+        addAnotherTransactionButton.setVisible(true);
     }
 
     @FXML
     private void goBackButtonOnAction(ActionEvent actionEvent) throws IOException {
         StageHandler.goToView(actionEvent, SystemConfiguration.transactionMenuViewPath);
+    }
+
+    @FXML
+    private void addAnotherTransactionButtonOnAction(ActionEvent actionEvent) throws IOException {
+        StageHandler.goToView(actionEvent, SystemConfiguration.addATransactionViewPath);
     }
 
     private void initializeTypeComboBox(String searchType) {
